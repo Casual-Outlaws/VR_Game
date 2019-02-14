@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class PlayerTeleport : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -13,10 +13,9 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if( Input.GetKeyDown( KeyCode.LeftControl ) )
+        if( Input.GetKeyDown( KeyCode.Space ) )
         {
-            transform.Translate( Vector3.forward * Time.deltaTime * 10.0f );
+            transform.Translate( Vector3.forward * 5.0f );
         }
-        
     }
 }
