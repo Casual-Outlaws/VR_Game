@@ -1,0 +1,16 @@
+{
+  "source": "Unity",
+  "applications": [
+    {
+      "app_key": "application.generated.unity.silentinthedark.exe",
+      "launch_type": "url",
+      "url": "steam://launch/",
+      "action_manifest_path": "D:\\Works\\GitHub\\SilentInTheDark\\SilentInTheDark\\actions.json",
+      "strings": {
+        "en_us": {
+          "name": "SilentInTheDark [Testing]"
+        }
+      }
+    }
+  ]
+}
