@@ -76,6 +76,20 @@ ModelImporter:
     4300022: Cube_022
     4300024: Cube_021
     4300026: Cube_020
+    6400000: Cube_000
+    6400002: Cube_001
+    6400004: Cube_002
+    6400006: Cube_003
+    6400008: Cube_004
+    6400010: Cube_005
+    6400012: Cube_006
+    6400014: Cube_020
+    6400016: Cube_021
+    6400018: Cube_022
+    6400020: Cube_023
+    6400022: Cube_024
+    6400024: Cube_025
+    6400026: Cube_026
     7400000: Default Take
     9500000: //RootNode
   externalObjects: {}
@@ -111,7 +125,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     useSRGBMaterialColor: 1
     importVisibility: 1
     importBlendShapes: 1
