@@ -5,18 +5,18 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField]
-    GameObject target, player;
+    [SerializeField] GameObject target, player;
     NavMeshAgent agent;
-    [SerializeField]
-    AudioSource audioSource;
-    bool isMoving, isWaiting;
-    float timer;
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip[] audioClips;
+    bool isMoving, isWaiting, stopSound;
+    float timer, distance;
 
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
         target = GameObject.FindGameObjectWithTag("Target");
+        player = GameObject.FindGameObjectWithTag("Player");
         agent = GetComponent<NavMeshAgent>();
     }
 
@@ -25,7 +25,8 @@ public class Enemy : MonoBehaviour
     {
         isWaiting = false;
         isMoving = true;
-        timer = Random.Range(1, 5);
+        stopSound = false;
+        timer = Random.Range(1, 3);
     }
 
     // Update is called once per frame
@@ -42,8 +43,23 @@ public class Enemy : MonoBehaviour
             }
         }
 
-        if(isMoving)
-        agent.destination = target.transform.position;
+        if (isMoving)
+        {
+            agent.destination = target.transform.position;
+            //audioSource.PlayOneShot(audioClips[0]);
+            StartCoroutine("PlaySound");
+        }
+
+        else
+        {
+            audioSource.Stop();
+        }
+
+        distance = Vector3.Distance(this.transform.position, player.transform.position);
+        if (distance > 3)
+        {
+            stopSound = false;
+        }
     }
 
     private void OnTriggerEnter(Collider col)
@@ -63,5 +79,24 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    IEnumerator PlaySound()
+    {
+        if (!audioSource.isPlaying && isMoving)
+        {
+            //audioSource.PlayOneShot(audioClips[0]);
+            audioSource.clip = audioClips[0];
+            audioSource.loop = true;
+            audioSource.Play();
+        }
 
+        //if (audioSource.isPlaying && isMoving && distance <= 3 && stopSound == false)
+        //{
+        //    //audioSource.Stop();
+        //    audioSource.PlayOneShot(audioClips[1]);
+        //    stopSound = true;
+        //}
+
+
+        yield return null;
+    }
 }
