@@ -320,6 +320,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 9162538931832798526, guid: d9783630157684b4daa570efe316d0dd,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 9162538931832798526, guid: d9783630157684b4daa570efe316d0dd,
+        type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9783630157684b4daa570efe316d0dd, type: 3}
 --- !u!1001 &381623887
