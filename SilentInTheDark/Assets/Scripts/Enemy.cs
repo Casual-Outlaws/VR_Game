@@ -6,32 +6,33 @@ using UnityEngine.AI;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] GameObject target, player;
-    NavMeshAgent agent;
+    public NavMeshAgent agent;
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip[] audioClips;
     bool isMoving, isWaiting, stopSound;
+    public bool isTarget; //Reacting to sounds. Has to be public.
     float timer, distance;
 
     private void Awake()
     {
-        audioSource = GetComponent<AudioSource>();
         target = GameObject.FindGameObjectWithTag("Target");
         player = GameObject.FindGameObjectWithTag("Player");
+        audioSource = GetComponent<AudioSource>();
         agent = GetComponent<NavMeshAgent>();
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         isWaiting = false;
         isMoving = true;
         stopSound = false;
+        isTarget = true;
         timer = Random.Range(1, 3);
     }
 
-    // Update is called once per frame
     void Update()
     {
+        //Random wait time
         if (isWaiting)
         {
             timer -= Time.deltaTime;
@@ -45,6 +46,7 @@ public class Enemy : MonoBehaviour
 
         if (isMoving)
         {
+            if(isTarget)
             agent.destination = target.transform.position;
             //audioSource.PlayOneShot(audioClips[0]);
             StartCoroutine("PlaySound");
@@ -66,16 +68,15 @@ public class Enemy : MonoBehaviour
     {
         if (col.gameObject.tag == "Target")
         {
-            isMoving = false;
-            int roll = Random.Range(0, 9);
-            if (roll >= 5)
-            {
-                isMoving = true;
-            }
-            else
-            {
-                isWaiting = true;
-            }
+            StartCoroutine("MoveDecision");
+        }
+    }
+
+    private void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.tag == "Item")
+        {
+            StartCoroutine("MoveDecision");
         }
     }
 
@@ -97,6 +98,22 @@ public class Enemy : MonoBehaviour
         //}
 
 
+        yield return null;
+    }
+
+    IEnumerator MoveDecision()
+    {
+        isMoving = false;
+        int roll = Random.Range(0, 9);
+        if (roll >= 5)
+        {
+            isMoving = true;
+        }
+        else
+        {
+            isWaiting = true;
+        }
+        
         yield return null;
     }
 }

@@ -6,10 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Target
-  - projectile
-  - FxTemporaire
-  - FrontDoor
-  - BackDoor
+  - Floor
   layers:
   - Default
   - TransparentFX
