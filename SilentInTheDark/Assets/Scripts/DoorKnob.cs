@@ -8,6 +8,7 @@ public class DoorKnob : MonoBehaviour
     [SerializeField]
     Animator doorAnimator;
 
+    Door parentDoor;
     CircularDrive doorHandle;
     Quaternion originalRotation;
     float originalAngle = 0.0f;
@@ -16,6 +17,7 @@ public class DoorKnob : MonoBehaviour
     void Start()
     {
         doorHandle = GetComponent<CircularDrive>();
+        parentDoor = GetComponentInParent<Door>();
         originalAngle = doorHandle.startAngle;
         originalRotation = transform.localRotation;
     }
@@ -27,14 +29,9 @@ public class DoorKnob : MonoBehaviour
 
     IEnumerator DoorOpenCoroutine( bool frontDoor )
     {
-        if( frontDoor )
-        {
-            doorAnimator.SetBool( "doorOpen", !doorAnimator.GetBool( "doorOpen" ) );
-        }
-        else
-        {
-            doorAnimator.SetBool( "doorReverseOpen", !doorAnimator.GetBool( "doorReverseOpen" ) );
-        }
+        bool opened = parentDoor.ToggleDoorOpen( frontDoor );
+        if( opened == false )
+            yield break;
         
         doorHandle.rotateGameObject = false;
         transform.localRotation = originalRotation;
