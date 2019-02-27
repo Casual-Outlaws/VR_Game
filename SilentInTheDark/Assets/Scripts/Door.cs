@@ -6,7 +6,6 @@ public class Door : MonoBehaviour
 {
     Animator doorAnimator;
 
-    [SerializeField]
     Inventory inventory;
 
     [SerializeField]
@@ -14,6 +13,24 @@ public class Door : MonoBehaviour
 
     [SerializeField]
     bool isLevelDoor;
+
+    [SerializeField]
+    AudioClip lockedSound;
+
+    [SerializeField]
+    AudioClip openingSound;
+
+    [SerializeField]
+    AudioClip closingSound;
+
+
+    AudioSource audio;
+
+    private void Awake()
+    {
+        inventory = FindObjectOfType<Inventory>();
+        audio = GetComponent<AudioSource>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -33,20 +50,31 @@ public class Door : MonoBehaviour
         {
             if( inventory.HasKey( isLevelDoor ) == false )
             {
+                audio.clip = lockedSound;
+                audio.Play();
                 return false;
             }
             inventory.DecreaseKey( isLevelDoor );
             isDoorLocked = false;
         }
 
+        bool isOpened;
         if( isFrontDoor )
         {
-            doorAnimator.SetBool( "doorOpen", !doorAnimator.GetBool( "doorOpen" ) );
+            isOpened = doorAnimator.GetBool( "doorOpen" );
+            doorAnimator.SetBool( "doorOpen", !isOpened );
         }
         else
         {
-            doorAnimator.SetBool( "doorReverseOpen", !doorAnimator.GetBool( "doorReverseOpen" ) );
+            isOpened = doorAnimator.GetBool( "doorOpen" );
+            doorAnimator.SetBool( "doorReverseOpen", !isOpened );
         }
+
+        if( isOpened )
+            audio.clip = closingSound;
+        else
+            audio.clip = openingSound;
+        audio.Play();
         return true;
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     int numOfKeys = 0;
-    int numOfLevelKeys = 0;
+    int numOfMasterKeys = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -19,34 +19,34 @@ public class Inventory : MonoBehaviour
         
     }
 
-    public void AddKey( bool isLevelKey )
+    public void AddKey( bool isMasterKey )
     {
-        if( isLevelKey )
-            numOfLevelKeys += 1;
+        if( isMasterKey )
+            numOfMasterKeys += 1;
         else
             numOfKeys += 1;
     }
 
-    public bool HasKey( bool isLevelKey )
+    public bool HasKey( bool isMasterKey )
     {
-        if( isLevelKey )
-            return numOfLevelKeys > 0;
+        if( isMasterKey )
+            return numOfMasterKeys > 0;
         else
             return numOfKeys > 0;
     }
 
-    public void DecreaseKey( bool isLevelKey )
+    public void DecreaseKey( bool isMasterKey )
     {
-        if( isLevelKey )
+        if( isMasterKey )
         {
-            if( numOfLevelKeys <= 0 )
-                throw new System.Exception( "Has no level key." );
-            numOfLevelKeys -= 1;
+            if( numOfMasterKeys <= 0 )
+                throw new System.Exception( "Has no master key." );
+            numOfMasterKeys -= 1;
         }
         else
         {
             if( numOfKeys <= 0 )
-                throw new System.Exception( "Has no key." );
+                throw new System.Exception( "Has no door key." );
             numOfKeys -= 1;
         }
     }
