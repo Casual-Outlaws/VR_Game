@@ -35,10 +35,15 @@ public class DoorKnob : MonoBehaviour
         {
             doorAnimator.SetBool( "doorReverseOpen", !doorAnimator.GetBool( "doorReverseOpen" ) );
         }
+        
+        doorHandle.rotateGameObject = false;
+        transform.localRotation = originalRotation;
         doorHandle.outAngle = originalAngle;
+
         yield return new WaitForSeconds( 0.5f );
         doorHandle.outAngle = originalAngle;
         transform.localRotation = originalRotation;
+        doorHandle.rotateGameObject = true;
     }
 
     public void DoorOpenTrigger()
