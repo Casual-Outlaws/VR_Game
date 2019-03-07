@@ -4,41 +4,29 @@ using UnityEngine;
 
 public class ItemsUsable : MonoBehaviour
 {
-    #region Variables to interact with enemy
-    GameObject enemyPrefab;
-    Enemy enemyScript;
-    [SerializeField]
-    float distance;
-    #endregion
-
+    GameObject detectionPrefab;
+    public GameObject outline;
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip[] audioClips;
 
     void Start()
     {
-        enemyPrefab = GameObject.FindGameObjectWithTag("Enemy");
-        enemyScript = enemyPrefab.GetComponent<Enemy>();
         audioSource = GetComponent<AudioSource>();
+        outline.SetActive(false);
     }
 
     void Update()
     {
-        //if (!enemyPrefab)
-        //{
-        //    enemyPrefab = GameObject.FindGameObjectWithTag("Enemy");
 
-        //}
-
-        distance = Vector3.Distance(this.transform.position, enemyPrefab.transform.position); //I'm not sure if we need update at all. I need to do more tests with collision.
     }
 
     private void OnCollisionEnter(Collision col)
     {
-        //Logic #1 for enemy reaction
-        if(col.gameObject.tag == "Floor" && distance <= 4)
+        if(col.gameObject.tag == "Floor" || col.gameObject.tag == "ItemS")
         {
-            enemyScript.isTarget = false;
-            enemyScript.agent.destination = this.transform.position;
+            GameObject clone;
+            clone = Instantiate(detectionPrefab, this.transform.position, transform.rotation);
+            audioSource.PlayOneShot(audioClips[0]);
         }
     }
 }
