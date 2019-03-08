@@ -26,6 +26,14 @@ public class InventoryObject : MonoBehaviour
 
     void Update()
     {
-        heldObject.gameObject.transform.position = this.transform.position;
+        if (heldObject)
+        {
+            this.gameObject.GetComponent<MeshRenderer>().enabled = false;
+            heldObject.gameObject.transform.position = this.transform.position;
+        }
+        else
+        {
+            this.gameObject.GetComponent<MeshRenderer>().enabled = true;
+        }
     }
 }
