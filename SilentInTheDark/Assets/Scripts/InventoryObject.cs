@@ -8,14 +8,20 @@ public class InventoryObject : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        heldObject = other.gameObject;
-        other.GetComponent<Rigidbody>().useGravity = false;
+        if (other.gameObject.tag == "ThrowableObject" && !heldObject)
+        {
+            heldObject = other.gameObject;
+            other.GetComponent<Rigidbody>().useGravity = false;
+        }
     }
 
     void OnTriggerExit(Collider other)
     {
-        heldObject = null;
-        other.GetComponent<Rigidbody>().useGravity = true;
+        if (other.gameObject.tag == "ThrowableObject" && heldObject == other.gameObject)
+        {
+            heldObject = null;
+            other.GetComponent<Rigidbody>().useGravity = true;
+        }
     }
 
     void Update()
