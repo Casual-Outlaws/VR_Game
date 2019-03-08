@@ -9,6 +9,7 @@ TagManager:
   - Floor
   - Highlight
   - Door
+  - HoldableObject
   layers:
   - Default
   - TransparentFX
