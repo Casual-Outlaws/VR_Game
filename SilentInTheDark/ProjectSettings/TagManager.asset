@@ -10,6 +10,8 @@ TagManager:
   - Highlight
   - Door
   - HoldableObject
+  - ItemD
+  - ItemS
   layers:
   - Default
   - TransparentFX
