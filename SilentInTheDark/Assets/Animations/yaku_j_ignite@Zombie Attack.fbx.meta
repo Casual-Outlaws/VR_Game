@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 225583b3825ff6949bbd2df24b0cafbf
+guid: 49714cf6bfc043240a98fb455745ab80
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -69,7 +69,6 @@ ModelImporter:
     100126: Spine1
     100128: Spine2
     100130: //RootNode
-    100132: Yaku_zombie
     400000: Head
     400002: HeadTop_End
     400004: Hips
@@ -136,29 +135,9 @@ ModelImporter:
     400126: Spine1
     400128: Spine2
     400130: //RootNode
-    400132: Yaku_zombie
-    2100000: yaku_zombie_material
-    4300000: Yaku_zombie
-    7400000: Idle
-    7400002: Idle (1)
+    7400000: mixamo.com
     9500000: //RootNode
-    13700000: Yaku_zombie
-  externalObjects:
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Yakuzombie_diffuse
-    second: {fileID: 2800000, guid: 2f111d96540459a46af2ef6f264696d5, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Yakuzombie_normal
-    second: {fileID: 2800000, guid: 8ee289713ef129641863cb8e81b4b0d7, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Yakuzombie_specular
-    second: {fileID: 2800000, guid: 3951cfca49c2f694d836caef687f886b, type: 3}
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
@@ -185,63 +164,7 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations:
-    - serializedVersion: 16
-      name: Idle
-      takeName: mixamo.com
-      firstFrame: 0
-      lastFrame: 300
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Idle (1)
-      takeName: mixamo.com
-      firstFrame: 0
-      lastFrame: 300
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+    clipAnimations: []
     isReadable: 1
   meshes:
     lODScreenPercentages: []
