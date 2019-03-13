@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Target : MonoBehaviour
 {
-
-    [SerializeField] GameObject targetPos, playerPos; //Object's position
+    [SerializeField] GameObject playerPos; //Object's position
+    public GameObject targetPos;
+    public bool forceChange;
     [SerializeField] int hits; //Debug variable to check collision
-    float timeReset; //In case if the enemy can't reach this object for X seconds new position will be generated
+    float timeReset; //In case if the enemy can't reach this object for X seconds new position will be generated or if targetPos was forceChanged.
     Vector3 newPos; //new coordinates
 
 
@@ -18,12 +19,21 @@ public class Target : MonoBehaviour
         StartCoroutine("generatePosition");
         targetPos.transform.position = newPos;
         hits = 0;
+        forceChange = false; //[forceChange = true] CAN ONLY BE SET BY DETECTION FROM ANOTHER OBJECT
     }
 
     void Update()
     {
         timeReset += Time.deltaTime;
-        if (timeReset >= 10)
+        if (forceChange && timeReset >= 10)
+        {
+            StartCoroutine("generatePosition");
+            targetPos.transform.position = newPos;
+            timeReset = 0;
+            forceChange = false;
+        }
+
+        if (!forceChange && timeReset >= 5)
         {
             StartCoroutine("generatePosition");
             targetPos.transform.position = newPos;
@@ -58,3 +68,5 @@ public class Target : MonoBehaviour
         yield return null;
     }
 }
+
+//Это было не легко, но логику я осуществил. Абсолютная дичь, но результат стоил моих усилий.

@@ -5,13 +5,18 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] GameObject target, player;
-    public NavMeshAgent agent;
+    [SerializeField] GameObject target, player, detectionPrefab;
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip[] audioClips;
-    bool isMoving, isWaiting, stopSound;
+    bool isMoving, isWaiting, canMove, stopSound;
+    public GameObject outline;
     public bool isTarget; //Reacting to sounds. Has to be public.
+    public NavMeshAgent agent;
+    NavMeshPath nmPath;
     float timer, distance;
+    [SerializeField] float speed;
+
+    [SerializeField] DetectionHighlight highlightScript;
 
     private void Awake()
     {
@@ -28,6 +33,8 @@ public class Enemy : MonoBehaviour
         stopSound = false;
         isTarget = true;
         timer = Random.Range(1, 3);
+        agent.speed = speed;
+        nmPath = new NavMeshPath();
     }
 
     void Update()
@@ -40,21 +47,30 @@ public class Enemy : MonoBehaviour
             {
                 isMoving = true;
                 isWaiting = false;
-                timer = Random.Range(1, 5);
+                timer = Random.Range(1, 3);
             }
         }
 
-        if (isMoving)
+        if (isMovingPossible() == true)
         {
-            if(isTarget)
+            canMove = true;
+        }
+        else
+            canMove = false;
+
+        if (isMoving && canMove)
+        {
+            if (isTarget)
             agent.destination = target.transform.position;
             //audioSource.PlayOneShot(audioClips[0]);
             StartCoroutine("PlaySound");
+            //StartCoroutine("SpawnDetectionPrefab");
         }
 
         else
         {
             audioSource.Stop();
+            //StopCoroutine("SpawnDetectionPrefab");
         }
 
         distance = Vector3.Distance(this.transform.position, player.transform.position);
@@ -64,11 +80,22 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    bool isMovingPossible()
+    {
+        agent.CalculatePath(target.transform.position, nmPath);
+        if (nmPath.status != NavMeshPathStatus.PathComplete)
+        {
+            return false;
+        }
+        else
+            return true;
+    }
+
     private void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == "Target")
+        if (col.gameObject.tag == "Detection")
         {
-            StartCoroutine("MoveDecision");
+            print("Detected");
         }
     }
 
@@ -79,6 +106,7 @@ public class Enemy : MonoBehaviour
             StartCoroutine("MoveDecision");
         }
     }
+
 
     IEnumerator PlaySound()
     {
@@ -115,5 +143,13 @@ public class Enemy : MonoBehaviour
         }
         
         yield return null;
+    }
+
+    IEnumerator SpawnDetectionPrefab()
+    {
+        //outline.SetActive(true);
+        //outline.SetActive(false);
+        yield return new WaitForSeconds(2);
+        StartCoroutine("SpawnDetectionPrefab");
     }
 }
