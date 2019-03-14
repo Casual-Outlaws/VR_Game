@@ -5,7 +5,12 @@ using UnityEngine;
 public class PlayerDetector : MonoBehaviour
 {
     public Animator enemyModel;
-    public GameObject GaneEndText;
+    public TextMesh GaneEndText;
+
+    private void Start()
+    {
+        GaneEndText.text = string.Empty;
+    }
 
     private void OnTriggerEnter( Collider other )
     {
@@ -16,7 +21,10 @@ public class PlayerDetector : MonoBehaviour
             {
                 GameManager.Instance.gameState = GameState.LostGame;
                 enemyModel.SetTrigger( "attackPlayer" );
-                GaneEndText.SetActive( true );
+                GaneEndText.text = "You DIE!";
+                Debug.Log( "You DIE!" );
+
+                gameObject.GetComponentInParent<SimpleEnemyAI>().PlaySound( EnemySoundType.Attack );
             }
         }
     }

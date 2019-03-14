@@ -4,6 +4,12 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.AI;
 
+public enum EnemySoundType
+{
+    Idle,
+    Walk,
+    Attack,
+}
 
 public class SimpleEnemyAI : MonoBehaviour, ISoundListener
 {
@@ -12,6 +18,9 @@ public class SimpleEnemyAI : MonoBehaviour, ISoundListener
     NavMeshAgent agent;
     NavMeshPath nmPath;
     GameObject player;
+    AudioSource audioSource;
+    public AudioClip[] audioClips;
+
 
     UnityEvent heardSound;
 
@@ -20,7 +29,7 @@ public class SimpleEnemyAI : MonoBehaviour, ISoundListener
         agent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag( "Player" );
         nmPath = new NavMeshPath();
-        
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Start is called before the first frame update
@@ -28,10 +37,7 @@ public class SimpleEnemyAI : MonoBehaviour, ISoundListener
     {
         EventManager.Instance.RegisterEventListener( this );
         enemyModel.SetBool( "isIdle", true );
-
-        //agent.destination = player.transform.position;
-        //agent.isStopped = false;
-        //enemyModel.SetBool( "isIdle", false );
+        PlaySound( EnemySoundType.Idle );
     }
 
     // Update is called once per frame
@@ -51,22 +57,8 @@ public class SimpleEnemyAI : MonoBehaviour, ISoundListener
         {
             agent.isStopped = true;
             enemyModel.SetBool( "isIdle", true );
+            PlaySound( EnemySoundType.Idle );
         }
-
-        //if( Physics.Raycast( ray, out hit ) )
-        //{
-        //    if( hit.collider.tag == "Player" )
-        //    {
-        //        agent.destination = player.transform.position;
-        //        agent.isStopped = false;
-        //        enemyModel.SetBool( "isIdle", false );
-        //    }
-        //    else
-        //    {
-        //        agent.isStopped = true;
-        //        enemyModel.SetBool( "isIdle", true );
-        //    }
-        //}
     }
 
     public void HeardSound( Vector3 location )
@@ -76,6 +68,14 @@ public class SimpleEnemyAI : MonoBehaviour, ISoundListener
             agent.destination = location;
             agent.isStopped = false;
             enemyModel.SetBool( "isIdle", false );
+            PlaySound( EnemySoundType.Walk );
         }
     }
+
+    public void PlaySound( EnemySoundType soundType )
+    {
+        audioSource.clip = audioClips[( int )soundType];
+        audioSource.Play();
+    }
+
 }
