@@ -6,6 +6,7 @@ public class ItemDynamic : MonoBehaviour
 {
     AudioSource audioSource;
     public RippleState rippleEffect;
+    float timer;
 
     void Start()
     {
@@ -14,11 +15,12 @@ public class ItemDynamic : MonoBehaviour
 
     void Update()
     {
+        timer += Time.deltaTime;
     }
 
     private void OnCollisionEnter(Collision col)
     {
-        if( col.gameObject.tag == "Floor" )
+        if( col.gameObject.tag == "Floor" && timer >= 5)
         {
             audioSource.Play();
             if( rippleEffect )

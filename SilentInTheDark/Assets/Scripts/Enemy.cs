@@ -8,13 +8,15 @@ public class Enemy : MonoBehaviour
     [SerializeField] GameObject target, player, detectionPrefab;
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip[] audioClips;
+    [SerializeField] Animator modelAnim;
+    [SerializeField] float speed;
+    float timer, distance;
     bool isMoving, isWaiting, canMove, stopSound;
     public GameObject outline;
     public bool isTarget; //Reacting to sounds. Has to be public.
     public NavMeshAgent agent;
     NavMeshPath nmPath;
-    float timer, distance;
-    [SerializeField] float speed;
+    Rigidbody rb;
 
     [SerializeField] DetectionHighlight highlightScript;
 
@@ -22,6 +24,8 @@ public class Enemy : MonoBehaviour
     {
         target = GameObject.FindGameObjectWithTag("Target");
         player = GameObject.FindGameObjectWithTag("Player");
+        rb = GetComponent<Rigidbody>();
+        //modelAnim = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
         agent = GetComponent<NavMeshAgent>();
     }
@@ -51,6 +55,7 @@ public class Enemy : MonoBehaviour
             }
         }
 
+        //setting bool if enemy can/can't reach the target
         if (isMovingPossible() == true)
         {
             canMove = true;
@@ -60,17 +65,19 @@ public class Enemy : MonoBehaviour
 
         if (isMoving && canMove)
         {
+            //modelAnim.SetBool("isIdle", false);
             if (isTarget)
-            agent.destination = target.transform.position;
-            //audioSource.PlayOneShot(audioClips[0]);
-            StartCoroutine("PlaySound");
-            //StartCoroutine("SpawnDetectionPrefab");
+            {
+                agent.destination = target.transform.position;
+                StartCoroutine("PlaySound");
+                modelAnim.SetBool("isIdle", false);
+            }
         }
-
         else
         {
             audioSource.Stop();
-            //StopCoroutine("SpawnDetectionPrefab");
+            modelAnim.SetBool("isIdle", true);
+            rb.velocity = Vector3.zero;
         }
 
         distance = Vector3.Distance(this.transform.position, player.transform.position);
@@ -80,6 +87,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    //checking if enemy can reach the target
     bool isMovingPossible()
     {
         agent.CalculatePath(target.transform.position, nmPath);
