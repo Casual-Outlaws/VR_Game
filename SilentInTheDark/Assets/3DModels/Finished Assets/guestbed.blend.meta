@@ -1,29 +1,39 @@
 fileFormatVersion: 2
-guid: d362194d34e32c74485288dae30c7013
+guid: e8d1e8b88ff7e1845bd3c19ace35ca57
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Door
-    100002: //RootNode
-    100004: Handle_1
-    100006: Handle_2
-    400000: Door
-    400002: //RootNode
-    400004: Handle_1
-    400006: Handle_2
-    2100000: Handle
-    2100002: Door_Base
-    2100004: Door_Detail
-    2100006: Handle_001
-    2300000: Door
-    2300002: Handle_1
-    2300004: Handle_2
-    3300000: Door
-    3300002: Handle_1
-    3300004: Handle_2
-    4300000: Handle_1
-    4300002: Door
-    4300004: Handle_2
+    100000: Cube
+    100002: Cube_001
+    100004: Cube_002
+    100006: Cube_003
+    100008: Cube_004
+    100010: //RootNode
+    400000: Cube
+    400002: Cube_001
+    400004: Cube_002
+    400006: Cube_003
+    400008: Cube_004
+    400010: //RootNode
+    2100000: Sheets
+    2100002: Pillow
+    2100004: Mattress
+    2100006: BedFrame
+    2300000: Cube
+    2300002: Cube_001
+    2300004: Cube_002
+    2300006: Cube_003
+    2300008: Cube_004
+    3300000: Cube
+    3300002: Cube_001
+    3300004: Cube_002
+    3300006: Cube_003
+    3300008: Cube_004
+    4300000: Cube_004
+    4300002: Cube_003
+    4300004: Cube_002
+    4300006: Cube_001
+    4300008: Cube
     7400000: Default Take
     9500000: //RootNode
   externalObjects: {}

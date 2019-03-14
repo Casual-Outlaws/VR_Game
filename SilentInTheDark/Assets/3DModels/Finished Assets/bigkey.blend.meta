@@ -1,29 +1,28 @@
 fileFormatVersion: 2
-guid: d362194d34e32c74485288dae30c7013
+guid: aaa8c3d4e7af2f643a30086c768a781e
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Door
-    100002: //RootNode
-    100004: Handle_1
-    100006: Handle_2
-    400000: Door
-    400002: //RootNode
-    400004: Handle_1
-    400006: Handle_2
-    2100000: Handle
-    2100002: Door_Base
-    2100004: Door_Detail
-    2100006: Handle_001
-    2300000: Door
-    2300002: Handle_1
-    2300004: Handle_2
-    3300000: Door
-    3300002: Handle_1
-    3300004: Handle_2
-    4300000: Handle_1
-    4300002: Door
-    4300004: Handle_2
+    100000: //RootNode
+    100002: Icosphere
+    100004: Sphere
+    100006: Torus
+    400000: //RootNode
+    400002: Icosphere
+    400004: Sphere
+    400006: Torus
+    2100000: Red_Gem
+    2100002: Detail
+    2100004: Key
+    2300000: Icosphere
+    2300002: Sphere
+    2300004: Torus
+    3300000: Icosphere
+    3300002: Sphere
+    3300004: Torus
+    4300000: Icosphere
+    4300002: Torus
+    4300004: Sphere
     7400000: Default Take
     9500000: //RootNode
   externalObjects: {}

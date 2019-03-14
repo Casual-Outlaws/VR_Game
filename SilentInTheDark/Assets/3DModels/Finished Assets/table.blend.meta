@@ -1,29 +1,14 @@
 fileFormatVersion: 2
-guid: d362194d34e32c74485288dae30c7013
+guid: 30a8ef40acb3c394fb9799f869d3c3a7
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Door
-    100002: //RootNode
-    100004: Handle_1
-    100006: Handle_2
-    400000: Door
-    400002: //RootNode
-    400004: Handle_1
-    400006: Handle_2
-    2100000: Handle
-    2100002: Door_Base
-    2100004: Door_Detail
-    2100006: Handle_001
-    2300000: Door
-    2300002: Handle_1
-    2300004: Handle_2
-    3300000: Door
-    3300002: Handle_1
-    3300004: Handle_2
-    4300000: Handle_1
-    4300002: Door
-    4300004: Handle_2
+    100000: //RootNode
+    400000: //RootNode
+    2100000: Desk
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Cube
     7400000: Default Take
     9500000: //RootNode
   externalObjects: {}
