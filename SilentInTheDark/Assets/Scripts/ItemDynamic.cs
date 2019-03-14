@@ -25,6 +25,8 @@ public class ItemDynamic : MonoBehaviour
             audioSource.Play();
             if( rippleEffect )
                 rippleEffect.RippleOrigin = transform.position;
+
+            EventManager.Instance.NotifyObservers( gameObject.transform.position );
         }
     }
 }

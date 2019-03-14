@@ -12,7 +12,7 @@ public class Key : MonoBehaviour
     TextMesh keyInfoText;
 
     [SerializeField]
-    float acquirableTime = 3.0f;
+    float acquirableTime = 1.5f;
     bool isAcquired = false;
 
     private Vector3 oldPosition;

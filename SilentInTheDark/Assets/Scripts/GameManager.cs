@@ -16,11 +16,21 @@ public class GameManager : MonoBehaviour
 {
     public GameState gameState { get; set; }
 
-    private GameManager()
-    {
+    public static GameManager Instance = null;
 
+    private void Awake()
+    {
+        if( Instance == null )
+        {
+            Instance = this;
+        }
+        else if( Instance != this )
+        {
+            UnityEngine.Object.Destroy( gameObject );
+        }
+
+        DontDestroyOnLoad( gameObject );
     }
-    public static GameManager Instance { get; } = new GameManager();
 
     // Start is called before the first frame update
     void Start()
