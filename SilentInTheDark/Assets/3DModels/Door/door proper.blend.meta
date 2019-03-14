@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e910fb89b831476459491b435c955f0c
+guid: fc9f78bb2057dd048994bcc391e07f77
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -24,9 +24,6 @@ ModelImporter:
     4300000: Handle_1
     4300002: Door
     4300004: Handle_2
-    6400000: Door
-    6400002: Handle_1
-    6400004: Handle_2
     7400000: Default Take
     9500000: //RootNode
   externalObjects: {}
@@ -62,7 +59,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 1
+    addColliders: 0
     useSRGBMaterialColor: 1
     importVisibility: 1
     importBlendShapes: 1
