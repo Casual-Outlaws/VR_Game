@@ -6,7 +6,7 @@ public class ItemDynamic : MonoBehaviour
 {
     AudioSource audioSource;
     public RippleState rippleEffect;
-    float timer;
+    bool detachedFromHand = false;
 
     void Start()
     {
@@ -15,18 +15,26 @@ public class ItemDynamic : MonoBehaviour
 
     void Update()
     {
-        timer += Time.deltaTime;
     }
 
     private void OnCollisionEnter(Collision col)
     {
-        if( col.gameObject.tag == "Floor" && timer >= 5)
+        if( col.gameObject.tag == "Floor" )
         {
-            audioSource.Play();
-            if( rippleEffect )
-                rippleEffect.RippleOrigin = transform.position;
+            if( detachedFromHand == true )
+            {
+                audioSource.Play();
+                if( rippleEffect )
+                    rippleEffect.RippleOrigin = transform.position;
 
-            EventManager.Instance.NotifyObservers( gameObject.transform.position );
+                EventManager.Instance.NotifyObservers( gameObject.transform.position );
+            }
+            detachedFromHand = false;
         }
+    }
+
+    public void DetachedFromHand()
+    {
+        detachedFromHand = true;
     }
 }
