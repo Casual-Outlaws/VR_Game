@@ -5,21 +5,27 @@ using Valve.VR.InteractionSystem;
 
 public class DoorKnob : MonoBehaviour
 {
-    [SerializeField]
-    Animator doorAnimator;
-
     Door parentDoor;
     CircularDrive doorHandle;
     Quaternion originalRotation;
     float originalAngle = 0.0f;
 
+
+    public bool isFrontDoor;
+    private Interactable interactable;
+
+    private void Awake()
+    {
+        interactable = GetComponent<Interactable>();
+        doorHandle = GetComponent<CircularDrive>();
+        parentDoor = GetComponentInParent<Door>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        doorHandle = GetComponent<CircularDrive>();
-        parentDoor = GetComponentInParent<Door>();
-        originalAngle = doorHandle.startAngle;
-        originalRotation = transform.localRotation;
+        //originalAngle = doorHandle.startAngle;
+        //originalRotation = transform.localRotation;
     }
 
     // Update is called once per frame
@@ -51,5 +57,21 @@ public class DoorKnob : MonoBehaviour
     public void DoorReverseOpenTrigger()
     {
         StartCoroutine( DoorOpenCoroutine( false ) );
+    }
+
+    private void HandHoverUpdate( Hand hand )
+    {
+        try
+        {
+            GrabTypes grabType = hand.GetGrabStarting();
+            if( grabType != GrabTypes.None )
+            {
+                parentDoor.ToggleDoorOpen( isFrontDoor );
+            }
+        }
+        catch( System.NullReferenceException e )
+        {
+            Debug.Log( e.ToString() );
+        }
     }
 }

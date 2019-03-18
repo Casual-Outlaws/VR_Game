@@ -1,46 +1,49 @@
 fileFormatVersion: 2
-guid: 4f18f46d3c163d4428e83eb664daac50
+guid: 56d380ae6709c264aa1419eab3270eae
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Door
-    100002: Handle
-    100004: //RootNode
-    100006: Bone
-    100008: Bone_0
-    100010: HingeArmature
-    100012: KnobArmature
-    100014: Armature
-    100016: Bone_001
-    400000: Door
-    400002: Handle
-    400004: //RootNode
-    400006: Bone
-    400008: Bone_0
-    400010: HingeArmature
-    400012: KnobArmature
-    400014: Armature
-    400016: Bone_001
-    2100000: Door_Base
-    2100002: Door_Detail
-    2100004: Handle_001
+    100000: Armature
+    100002: Bone
+    100004: Bone.001
+    100006: Bone.001_end
+    100008: Camera
+    100010: Door
+    100012: Handle
+    100014: Lamp
+    100016: //RootNode
+    400000: Armature
+    400002: Bone
+    400004: Bone.001
+    400006: Bone.001_end
+    400008: Camera
+    400010: Door
+    400012: Handle
+    400014: Lamp
+    400016: //RootNode
+    2000000: Camera
+    2100000: Door Base
+    2100002: Door Detail
+    2100004: Handle.001
     2300000: Door
     2300002: Handle
     3300000: Door
     3300002: Handle
     4300000: Door
     4300002: Handle
-    7400000: Default Take
-    7400002: DoorOpen
-    7400004: DoorKnob
-    7400006: DoorOpenFront
-    7400008: DoorOpenBack
-    7400010: DoorKnobOpen
-    7400012: DoorKnobLocked
-    7400014: DoorIdle
+    6400000: Door
+    6400002: Handle
+    7400000: Armature|DoorKnob
+    7400002: Armature|DoorOpen
+    7400004: DoorOpenFront
+    7400006: DoorOpenBack
+    7400008: DoorKnobOpen
+    7400010: DoorKnobLocked
+    7400012: DoorIdle
+    7400014: DoorOpenBack
+    7400016: DoorKnobLocked
     9500000: //RootNode
-    13700000: Door
-    13700002: Handle
+    10800000: Lamp
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -52,7 +55,7 @@ ModelImporter:
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
-    motionNodeName: Armature/Bone/Bone_001
+    motionNodeName: Armature/Bone
     rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
@@ -70,36 +73,8 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Default Take
-      takeName: Default Take
-      firstFrame: 0
-      lastFrame: 139
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: DoorKnob
-      takeName: DoorKnob
+      name: Armature|DoorKnob
+      takeName: Armature|DoorKnob
       firstFrame: 0
       lastFrame: 69
       wrapMode: 0
@@ -121,13 +96,31 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events: []
-      transformMask: []
-      maskType: 3
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 0
+      - path: Armature/Bone
+        weight: 0
+      - path: Armature/Bone/Bone.001
+        weight: 1
+      - path: Armature/Bone/Bone.001/Bone.001_end
+        weight: 1
+      - path: Armature/Bone/Bone.001/Handle
+        weight: 1
+      - path: Armature/Bone/Door
+        weight: 0
+      - path: Camera
+        weight: 0
+      - path: Lamp
+        weight: 0
+      maskType: 0
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: DoorOpen
-      takeName: DoorOpen
+      name: Armature|DoorOpen
+      takeName: Armature|DoorOpen
       firstFrame: 0
       lastFrame: 139
       wrapMode: 0
@@ -155,7 +148,7 @@ ModelImporter:
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: DoorOpenFront
-      takeName: DoorOpen
+      takeName: Armature|DoorOpen
       firstFrame: 0
       lastFrame: 60
       wrapMode: 0
@@ -182,36 +175,8 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: DoorOpenBack
-      takeName: DoorOpen
-      firstFrame: 70
-      lastFrame: 130
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
       name: DoorKnobOpen
-      takeName: DoorKnob
+      takeName: Armature|DoorKnob
       firstFrame: 10
       lastFrame: 30
       wrapMode: 0
@@ -240,20 +205,72 @@ ModelImporter:
         weight: 0
       - path: Armature/Bone
         weight: 0
-      - path: Armature/Bone/Bone_001
+      - path: Armature/Bone/Bone.001
         weight: 1
-      - path: Door
+      - path: Armature/Bone/Bone.001/Bone.001_end
+        weight: 1
+      - path: Armature/Bone/Bone.001/Handle
+        weight: 1
+      - path: Armature/Bone/Door
         weight: 0
-      - path: Handle
+      - path: Camera
+        weight: 0
+      - path: Lamp
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: DoorOpenBack
+      takeName: Armature|DoorOpen
+      firstFrame: 70
+      lastFrame: 130
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Bone
+        weight: 1
+      - path: Armature/Bone/Bone.001
+        weight: 1
+      - path: Armature/Bone/Bone.001/Bone.001_end
+        weight: 1
+      - path: Armature/Bone/Bone.001/Handle
+        weight: 1
+      - path: Armature/Bone/Door
+        weight: 1
+      - path: Camera
+        weight: 1
+      - path: Lamp
         weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: DoorKnobLocked
-      takeName: DoorKnob
-      firstFrame: 50
-      lastFrame: 69
+      takeName: Armature|DoorKnob
+      firstFrame: 40
+      lastFrame: 60
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -273,15 +290,33 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events: []
-      transformMask: []
-      maskType: 3
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Bone
+        weight: 1
+      - path: Armature/Bone/Bone.001
+        weight: 1
+      - path: Armature/Bone/Bone.001/Bone.001_end
+        weight: 1
+      - path: Armature/Bone/Bone.001/Handle
+        weight: 1
+      - path: Armature/Bone/Door
+        weight: 1
+      - path: Camera
+        weight: 1
+      - path: Lamp
+        weight: 1
+      maskType: 0
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: DoorIdle
-      takeName: Default Take
+      takeName: Armature|DoorOpen
       firstFrame: 0
-      lastFrame: 5
+      lastFrame: 0
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -301,7 +336,25 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events: []
-      transformMask: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Bone
+        weight: 1
+      - path: Armature/Bone/Bone.001
+        weight: 1
+      - path: Armature/Bone/Bone.001/Bone.001_end
+        weight: 1
+      - path: Armature/Bone/Bone.001/Handle
+        weight: 1
+      - path: Armature/Bone/Door
+        weight: 1
+      - path: Camera
+        weight: 1
+      - path: Lamp
+        weight: 1
       maskType: 3
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
@@ -329,7 +382,7 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 1
+    previousCalculatedGlobalScale: 0.01
     hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60

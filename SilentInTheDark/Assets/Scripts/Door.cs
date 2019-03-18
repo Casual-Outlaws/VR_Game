@@ -28,14 +28,14 @@ public class Door : MonoBehaviour
 
     private void Awake()
     {
-        inventory = FindObjectOfType<Inventory>();
         audio = GetComponent<AudioSource>();
+        doorAnimator = GetComponent<Animator>();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        doorAnimator = GetComponent<Animator>();
+        inventory = FindObjectOfType<Inventory>();
     }
 
     // Update is called once per frame
@@ -46,35 +46,51 @@ public class Door : MonoBehaviour
 
     public bool ToggleDoorOpen( bool isFrontDoor )
     {
+        if( isFrontDoor )
+            Debug.Log( "Front door Toggle." );
+        else
+            Debug.Log( "Back door Toggle." );
+        bool canOpen = true;
         if( isDoorLocked )
         {
-            if( inventory.HasKey( isLevelDoor ) == false )
+            bool hasKey = inventory.HasKey( isLevelDoor );
+            doorAnimator.SetBool( "isDoorLocked", !hasKey );
+
+            if( hasKey == false )
             {
                 audio.clip = lockedSound;
                 audio.Play();
-                return false;
+                canOpen = false;
             }
-            inventory.DecreaseKey( isLevelDoor );
-            isDoorLocked = false;
+            else
+            {
+                inventory.DecreaseKey( isLevelDoor );
+                isDoorLocked = false;
+            }
         }
+        doorAnimator.SetTrigger( "ToggleOpenDoor" );
 
-        bool isOpened;
-        if( isFrontDoor )
+        if( canOpen )
         {
-            isOpened = doorAnimator.GetBool( "doorOpen" );
-            doorAnimator.SetBool( "doorOpen", !isOpened );
-        }
-        else
-        {
-            isOpened = doorAnimator.GetBool( "doorOpen" );
-            doorAnimator.SetBool( "doorReverseOpen", !isOpened );
-        }
+            bool isOpened;
+            doorAnimator.SetBool( "isFrontDoor", isFrontDoor );
+            if( isFrontDoor )
+            {
+                isOpened = doorAnimator.GetBool( "doorOpen" );
+                doorAnimator.SetBool( "doorOpen", !isOpened );
+            }
+            else
+            {
+                isOpened = doorAnimator.GetBool( "doorReverseOpen" );
+                doorAnimator.SetBool( "doorReverseOpen", !isOpened );
+            }
 
-        if( isOpened )
-            audio.clip = closingSound;
-        else
-            audio.clip = openingSound;
-        audio.Play();
-        return true;
+            if( isOpened )
+                audio.clip = closingSound;
+            else
+                audio.clip = openingSound;
+            audio.Play();
+        }
+        return canOpen;
     }
 }
