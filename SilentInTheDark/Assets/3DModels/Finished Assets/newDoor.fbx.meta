@@ -12,6 +12,8 @@ ModelImporter:
     100012: Handle
     100014: Lamp
     100016: //RootNode
+    100018: Handle.001
+    100020: Handle.002
     400000: Armature
     400002: Bone
     400004: Bone.001
@@ -21,18 +23,28 @@ ModelImporter:
     400012: Handle
     400014: Lamp
     400016: //RootNode
+    400018: Handle.001
+    400020: Handle.002
     2000000: Camera
     2100000: Door Base
     2100002: Door Detail
     2100004: Handle.001
     2300000: Door
     2300002: Handle
+    2300004: Handle.001
+    2300006: Handle.002
     3300000: Door
     3300002: Handle
+    3300004: Handle.001
+    3300006: Handle.002
     4300000: Door
     4300002: Handle
+    4300004: Handle.001
+    4300006: Handle.002
     6400000: Door
     6400002: Handle
+    6400004: Handle.001
+    6400006: Handle.002
     7400000: Armature|DoorKnob
     7400002: Armature|DoorOpen
     7400004: DoorOpenFront
@@ -55,7 +67,7 @@ ModelImporter:
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
-    motionNodeName: Armature/Bone
+    motionNodeName: Armature/Bone/Bone.001
     rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
@@ -72,80 +84,6 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations:
-    - serializedVersion: 16
-      name: Armature|DoorKnob
-      takeName: Armature|DoorKnob
-      firstFrame: 0
-      lastFrame: 69
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask:
-      - path: 
-        weight: 1
-      - path: Armature
-        weight: 0
-      - path: Armature/Bone
-        weight: 0
-      - path: Armature/Bone/Bone.001
-        weight: 1
-      - path: Armature/Bone/Bone.001/Bone.001_end
-        weight: 1
-      - path: Armature/Bone/Bone.001/Handle
-        weight: 1
-      - path: Armature/Bone/Door
-        weight: 0
-      - path: Camera
-        weight: 0
-      - path: Lamp
-        weight: 0
-      maskType: 0
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Armature|DoorOpen
-      takeName: Armature|DoorOpen
-      firstFrame: 0
-      lastFrame: 139
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: DoorOpenFront
       takeName: Armature|DoorOpen
@@ -176,9 +114,9 @@ ModelImporter:
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: DoorKnobOpen
-      takeName: Armature|DoorKnob
+      takeName: Armature|DoorKnob2
       firstFrame: 10
-      lastFrame: 30
+      lastFrame: 50
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -208,9 +146,9 @@ ModelImporter:
       - path: Armature/Bone/Bone.001
         weight: 1
       - path: Armature/Bone/Bone.001/Bone.001_end
-        weight: 1
+        weight: 0
       - path: Armature/Bone/Bone.001/Handle
-        weight: 1
+        weight: 0
       - path: Armature/Bone/Door
         weight: 0
       - path: Camera
