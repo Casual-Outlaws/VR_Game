@@ -590,7 +590,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 796fc4cca541f67478efcee9332f4b26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorAnimator: {fileID: 9070770622144031571}
+  isFrontDoor: 0
 --- !u!1 &9070770621584604497
 GameObject:
   m_ObjectHideFlags: 0
@@ -870,7 +870,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 796fc4cca541f67478efcee9332f4b26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorAnimator: {fileID: 9070770622144031571}
+  isFrontDoor: 0
 --- !u!1 &9070770621584604511
 GameObject:
   m_ObjectHideFlags: 0
@@ -1050,8 +1050,8 @@ MonoBehaviour:
   isDoorLocked: 1
   isLevelDoor: 0
   lockedSound: {fileID: 8300000, guid: a2bcd115f86b9994c8b7ce9e6086f7c9, type: 3}
-  openingSound: {fileID: 8300000, guid: 412a19acb8f6093408f57c51281caaa1, type: 3}
-  closingSound: {fileID: 8300000, guid: 7bd1f809640f5284eae006f11c6ec5b8, type: 3}
+  openingSound: {fileID: 8300000, guid: da1a980992ec49c45b02e1aadfc84d9b, type: 3}
+  closingSound: {fileID: 8300000, guid: e6a972cabe195164d8245c802d9683ae, type: 3}
 --- !u!82 &3508584389921667463
 AudioSource:
   m_ObjectHideFlags: 0
