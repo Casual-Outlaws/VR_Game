@@ -140,16 +140,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5409921708909886823, guid: cc58525a297c2ec4ba9be17ce074365f,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 0d02d80db9af197488eb3c2b1743bf59, type: 3}
     - target: {fileID: 1718420857022974431, guid: cc58525a297c2ec4ba9be17ce074365f,
         type: 3}
       propertyPath: onDetachFromHand.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 336441509224940689}
-    - target: {fileID: 5409921708909886823, guid: cc58525a297c2ec4ba9be17ce074365f,
-        type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 494bd1721199a40c5a79fa3011793556, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc58525a297c2ec4ba9be17ce074365f, type: 3}
 --- !u!4 &5822408832229745644 stripped
