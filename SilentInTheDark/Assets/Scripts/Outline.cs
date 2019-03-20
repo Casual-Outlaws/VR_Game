@@ -23,7 +23,9 @@ public class Outline : MonoBehaviour {
     OutlineAndSilhouette,
     SilhouetteOnly,
     StaticObject,
-    DynamicObject
+    DynamicObject,
+   OutlineOff
+
   }
 
   public Mode OutlineMode {
@@ -288,6 +290,13 @@ public class Outline : MonoBehaviour {
                 outlineMaskMaterial.SetFloat("_ZTest", (float)UnityEngine.Rendering.CompareFunction.Never);
                 outlineFillMaterial.SetFloat("_ZTestMask", (float)UnityEngine.Rendering.CompareFunction.LessEqual);
                 outlineFillMaterial.SetFloat("_ZTestFill", (float)UnityEngine.Rendering.CompareFunction.Always);
+                outlineFillMaterial.SetFloat("_OutlineWidth", outlineWidth);
+                break;
+
+            case Mode.OutlineOff:
+                outlineMaskMaterial.SetFloat("_ZTest", (float)UnityEngine.Rendering.CompareFunction.Never);
+                outlineFillMaterial.SetFloat("_ZTestMask", (float)UnityEngine.Rendering.CompareFunction.Never);
+                outlineFillMaterial.SetFloat("_ZTestFill", (float)UnityEngine.Rendering.CompareFunction.Never);
                 outlineFillMaterial.SetFloat("_OutlineWidth", outlineWidth);
                 break;
         }
