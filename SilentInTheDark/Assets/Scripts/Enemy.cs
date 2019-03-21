@@ -65,7 +65,6 @@ public class Enemy : MonoBehaviour
 
         if (isMoving && canMove)
         {
-            //modelAnim.SetBool("isIdle", false);
             if (isTarget)
             {
                 agent.destination = target.transform.position;

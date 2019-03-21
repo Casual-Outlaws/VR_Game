@@ -7,14 +7,18 @@ public class ItemDynamic : MonoBehaviour
     AudioSource audioSource;
     public RippleState rippleEffect;
     bool detachedFromHand = false;
+    float timer;
+    [SerializeField] GameObject detectionPrefab;
 
     void Start()
     {
+        timer = 0;
         audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
     {
+        timer += Time.deltaTime;
     }
 
     private void OnCollisionEnter(Collision col)
@@ -30,11 +34,20 @@ public class ItemDynamic : MonoBehaviour
                 EventManager.Instance.NotifyObservers( gameObject.transform.position );
             }
             detachedFromHand = false;
+            StartCoroutine("Detect", timer);
         }
     }
 
     public void DetachedFromHand()
     {
         detachedFromHand = true;
+    }
+
+    IEnumerator Detect(float cooldown)
+    {
+        detectionPrefab.SetActive(true);
+        yield return new WaitForSeconds(cooldown);
+        detectionPrefab.SetActive(false);
+        timer = 0;
     }
 }
