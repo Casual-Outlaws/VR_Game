@@ -9,6 +9,8 @@ public class ItemDynamic : MonoBehaviour, ISoundListener
     bool detachedFromHand = false;
     Outline hightlightShading;
 
+    public float maxDistanceForHighlight = 10.0f;
+
     void Awake()
     {
         hightlightShading = GetComponent<Outline>();
@@ -52,9 +54,9 @@ public class ItemDynamic : MonoBehaviour, ISoundListener
     public void HeardSound( Vector3 posSound )
     {
         float distanceSq = gameObject.transform.position.GetDistanceSq( posSound );
-        if( distanceSq < 100 )
+        if( distanceSq < maxDistanceForHighlight * maxDistanceForHighlight )
         {
-            StartCoroutine( ChangeOutline( distanceSq / 20 ) );
+            StartCoroutine( ChangeOutline( distanceSq / ( 2 * maxDistanceForHighlight ) ) );
         }
     }
 
