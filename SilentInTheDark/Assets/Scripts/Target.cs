@@ -59,7 +59,7 @@ public class Target : MonoBehaviour
         //print(coin);
         if (coin <= 7.49f)
         {
-            newPos = new Vector3(Random.Range(-8, 5), 1, Random.Range(-5, 10));
+            newPos = new Vector3(Random.Range(-2, 5), 1, Random.Range(-0.5f, 7));
         }
         else
         {

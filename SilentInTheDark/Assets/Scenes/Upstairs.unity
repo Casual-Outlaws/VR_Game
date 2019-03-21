@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -97,15 +97,15 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 0.5
+    agentRadius: 0.1
     agentHeight: 2
     agentSlope: 45
-    agentClimb: 0.4
+    agentClimb: 0.5
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2
     manualCellSize: 0
-    cellSize: 0.16666667
+    cellSize: 0.033333335
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
@@ -191,6 +191,14 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 6df05cd06fbe72c4b8467e73cbebf02c, type: 3}
       propertyPath: m_Name
       value: upstairs proper (no ceiling)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 6df05cd06fbe72c4b8467e73cbebf02c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 6df05cd06fbe72c4b8467e73cbebf02c, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6df05cd06fbe72c4b8467e73cbebf02c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -784,17 +792,17 @@ PrefabInstance:
     - target: {fileID: 4188859789797705252, guid: 358ae3cfc3c4cee44bdaa45c6bcc0e71,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.8050985
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4188859789797705252, guid: 358ae3cfc3c4cee44bdaa45c6bcc0e71,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.120000005
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4188859789797705252, guid: 358ae3cfc3c4cee44bdaa45c6bcc0e71,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.63343
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4188859789797705252, guid: 358ae3cfc3c4cee44bdaa45c6bcc0e71,
         type: 3}
@@ -4603,6 +4611,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5935987239525846641, guid: b057849e2745a1c4e8e029c9132f15e7,
+        type: 3}
+      propertyPath: speed
+      value: 0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b057849e2745a1c4e8e029c9132f15e7, type: 3}
 --- !u!1 &1496263486
@@ -4743,7 +4756,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &1580056589
 Light:
   m_ObjectHideFlags: 0
@@ -5287,7 +5300,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 3e420aa5532bcc141bc26f9debd1da15, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 3e420aa5532bcc141bc26f9debd1da15, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5534,7 +5547,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 417e639b66cd3a24e9c5312be99ce3bd, type: 2}
+  - {fileID: 2100000, guid: 5f0129f65bc822d429cfad1b63fb9db4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

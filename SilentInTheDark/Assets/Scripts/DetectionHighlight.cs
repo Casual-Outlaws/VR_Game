@@ -38,13 +38,15 @@ public class DetectionHighlight : MonoBehaviour
     {
         if (col.gameObject.tag == ("ItemS"))
         {
-            
+            //add YK code
         }
 
         if (col.gameObject.tag == ("ItemD"))
         {
             ItemDynamic script = col.gameObject.GetComponent<ItemDynamic>();
             script.StartCoroutine("ChangeOutline", 1f);
+
+            //add YK code
         }
 
         if (col.gameObject.tag == ("Door"))
