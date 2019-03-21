@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 5842718334464002043, guid: cc58525a297c2ec4ba9be17ce074365f,
         type: 3}
       propertyPath: m_Name
-      value: ThrowableObject
+      value: ThrowableObject Variant
       objectReference: {fileID: 0}
     - target: {fileID: 1525436043265076751, guid: cc58525a297c2ec4ba9be17ce074365f,
         type: 3}
@@ -67,5 +67,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1718420857022974431, guid: cc58525a297c2ec4ba9be17ce074365f,
+        type: 3}
+      propertyPath: onDetachFromHand.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5757649680719925299}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc58525a297c2ec4ba9be17ce074365f, type: 3}
+--- !u!114 &5757649680719925299 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4705542284870830450, guid: cc58525a297c2ec4ba9be17ce074365f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1056716607817881921}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fc13650c0bf6c0489403b157153b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
