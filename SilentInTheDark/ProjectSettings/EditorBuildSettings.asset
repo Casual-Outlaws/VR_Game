@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/Upstairs.unity
+    guid: 040877c06e635984dbecd3cbcbec91eb
+  - enabled: 1
+    path: Assets/Scenes/TheEnd.unity
+    guid: 4d71d791738faad40a9cc0ff8f763e3f
   m_configObjects: {}
