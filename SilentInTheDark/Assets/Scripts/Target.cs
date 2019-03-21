@@ -25,7 +25,7 @@ public class Target : MonoBehaviour
     void Update()
     {
         timeReset += Time.deltaTime;
-        if (forceChange && timeReset >= 10)
+        if (forceChange && timeReset >= 20)
         {
             StartCoroutine("generatePosition");
             targetPos.transform.position = newPos;
@@ -56,7 +56,7 @@ public class Target : MonoBehaviour
     IEnumerator generatePosition()
     {
         float coin = Random.Range(0f, 10f);
-        print(coin);
+        //print(coin);
         if (coin <= 7.49f)
         {
             newPos = new Vector3(Random.Range(-8, 5), 1, Random.Range(-5, 10));

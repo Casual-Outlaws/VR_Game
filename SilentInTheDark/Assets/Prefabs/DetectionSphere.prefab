@@ -13,12 +13,12 @@ GameObject:
   - component: {fileID: 2721382759898994348}
   - component: {fileID: 6799132269897492721}
   m_Layer: 0
-  m_Name: DetectHighlight
+  m_Name: DetectionSphere
   m_TagString: Highlight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7390857645269279588
 Transform:
   m_ObjectHideFlags: 0
@@ -58,10 +58,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8514fdd8e72a1f84f984567a79e971f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highlightCollider: {fileID: 5927344668444554362}
+  thisCollider: {fileID: 0}
   onItem: 0
   onEnemy: 0
   onPlayer: 0
+  enemyHit: 0
+  enemyUpstairs: {fileID: 0}
+  enemyDownstarirs: {fileID: 0}
 --- !u!54 &6799132269897492721
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -7,6 +7,10 @@ public class ItemDynamic : MonoBehaviour, ISoundListener
     AudioSource audioSource;
     public RippleState rippleEffect;
     bool detachedFromHand = false;
+
+    float timer;
+    [SerializeField] GameObject detectionPrefab;
+
     Outline hightlightShading;
 
     public float maxDistanceForHighlight = 10.0f;
@@ -14,12 +18,15 @@ public class ItemDynamic : MonoBehaviour, ISoundListener
     void Awake()
     {
         hightlightShading = GetComponent<Outline>();
+        hightlightShading.enabled = false;
 
         rippleEffect = FindObjectOfType<RippleState>();
     }
 
+
     void Start()
     {
+        timer = 0;
         audioSource = GetComponent<AudioSource>();
         EventManager.Instance.RegisterEventListener( this );
         if( hightlightShading )
@@ -28,6 +35,7 @@ public class ItemDynamic : MonoBehaviour, ISoundListener
 
     void Update()
     {
+        timer += Time.deltaTime;
     }
 
     private void OnCollisionEnter( Collision col )
@@ -43,12 +51,22 @@ public class ItemDynamic : MonoBehaviour, ISoundListener
                 EventManager.Instance.NotifyObservers( gameObject.transform.position );
             }
             detachedFromHand = false;
+            StartCoroutine("Detect", timer);
         }
     }
 
     public void DetachedFromHand()
     {
         detachedFromHand = true;
+    }
+
+
+    IEnumerator Detect(float cooldown)
+    {
+        detectionPrefab.SetActive(true);
+        yield return new WaitForSeconds(cooldown);
+        detectionPrefab.SetActive(false);
+        timer = 0;
     }
 
     public void HeardSound( Vector3 posSound )
@@ -63,19 +81,19 @@ public class ItemDynamic : MonoBehaviour, ISoundListener
     IEnumerator ChangeOutline( float time )
     {
         //Debug.LogFormat( "{0} heard sound at {1}", gameObject.ToString(), time );
-        yield return new WaitForSeconds( time );
         if( hightlightShading )
         {
             hightlightShading.enabled = true;
             //hightlightShading.OutlineMode = Outline.Mode.OutlineVisible;
         }
 
-        yield return new WaitForSeconds( 1.0f );
+        yield return new WaitForSeconds( time );
         if( hightlightShading )
         {
             hightlightShading.enabled = false;
             //hightlightShading.OutlineMode = Outline.Mode.OutlineOff;
         }
     }
+
 
 }
