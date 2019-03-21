@@ -348,38 +348,45 @@ namespace Valve.VR
             lastActionData = actionData;
             lastActive = active;
 
-            EVRInputError err = OpenVR.Input.GetDigitalActionData(action.handle, ref actionData, actionData_size, inputSourceHandle);
-            if (err != EVRInputError.None)
-                Debug.LogError("<b>[SteamVR]</b> GetDigitalActionData error (" + action.fullPath + "): " + err.ToString() + " handle: " + action.handle.ToString());
-
-            if (changed)
-                changedTime = Time.realtimeSinceStartup + actionData.fUpdateTime;
-
-            updateTime = Time.realtimeSinceStartup;
-
-            if (active)
+            try
             {
-                if (onStateDown != null && stateDown)
-                    onStateDown.Invoke(booleanAction, inputSource);
+                EVRInputError err = OpenVR.Input.GetDigitalActionData( action.handle, ref actionData, actionData_size, inputSourceHandle );
+                if( err != EVRInputError.None )
+                    Debug.LogError( "<b>[SteamVR]</b> GetDigitalActionData error (" + action.fullPath + "): " + err.ToString() + " handle: " + action.handle.ToString() );
 
-                if (onStateUp != null && stateUp)
-                    onStateUp.Invoke(booleanAction, inputSource);
+                if( changed )
+                    changedTime = Time.realtimeSinceStartup + actionData.fUpdateTime;
 
-                if (onState != null && state)
-                    onState.Invoke(booleanAction, inputSource);
+                updateTime = Time.realtimeSinceStartup;
 
-                if (onChange != null && changed)
-                    onChange.Invoke(booleanAction, inputSource, state);
+                if( active )
+                {
+                    if( onStateDown != null && stateDown )
+                        onStateDown.Invoke( booleanAction, inputSource );
 
-                if (onUpdate != null)
-                    onUpdate.Invoke(booleanAction, inputSource, state);
+                    if( onStateUp != null && stateUp )
+                        onStateUp.Invoke( booleanAction, inputSource );
+
+                    if( onState != null && state )
+                        onState.Invoke( booleanAction, inputSource );
+
+                    if( onChange != null && changed )
+                        onChange.Invoke( booleanAction, inputSource, state );
+
+                    if( onUpdate != null )
+                        onUpdate.Invoke( booleanAction, inputSource, state );
+                }
+
+                if( onActiveBindingChange != null && lastActiveBinding != activeBinding )
+                    onActiveBindingChange.Invoke( booleanAction, inputSource, activeBinding );
+
+                if( onActiveChange != null && lastActive != active )
+                    onActiveChange.Invoke( booleanAction, inputSource, activeBinding );
             }
-
-            if (onActiveBindingChange != null && lastActiveBinding != activeBinding)
-                onActiveBindingChange.Invoke(booleanAction, inputSource, activeBinding);
-
-            if (onActiveChange != null && lastActive != active)
-                onActiveChange.Invoke(booleanAction, inputSource, activeBinding);
+            catch( NullReferenceException e)
+            {
+                Debug.Log( e.ToString() );
+            }
         }
     }
     

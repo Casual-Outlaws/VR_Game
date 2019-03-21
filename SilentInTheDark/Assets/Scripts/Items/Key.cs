@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Valve.VR.InteractionSystem;
 
-public class Key : MonoBehaviour
+public class Key : MonoBehaviour, ISoundListener
 {
     [SerializeField]
     bool isMasterKey;
@@ -23,10 +23,14 @@ public class Key : MonoBehaviour
     private Interactable interactable;
     private Inventory playerInventory;
 
+    Outline hightlightShading;
+    public float maxDistanceForHighlight = 10.0f;
+
     private void Awake()
     {
         interactable = GetComponent<Interactable>();
         playerInventory = FindObjectOfType<Inventory>();
+        hightlightShading = GetComponent<Outline>();
     }
 
     // Start is called before the first frame update
@@ -34,6 +38,9 @@ public class Key : MonoBehaviour
     {
         if( keyInfoText )
             keyInfoText.text = string.Empty;
+        EventManager.Instance.RegisterEventListener( this );
+        if( hightlightShading )
+            hightlightShading.enabled = false;
     }
 
     // Update is called once per frame
@@ -173,6 +180,31 @@ public class Key : MonoBehaviour
                 else
                     keyInfoText.text = string.Format( "got a door key." );
             }
+        }
+    }
+
+    public void HeardSound( Vector3 posSound )
+    {
+        float distanceSq = gameObject.transform.position.GetDistanceSq( posSound );
+        if( distanceSq < maxDistanceForHighlight * maxDistanceForHighlight )
+        {
+            StartCoroutine( ChangeOutline( distanceSq / ( 2 * maxDistanceForHighlight ) ) );
+        }
+    }
+
+    IEnumerator ChangeOutline( float time )
+    {
+        yield return new WaitForSeconds( time );
+
+        if( hightlightShading )
+        {
+            hightlightShading.enabled = true;
+        }
+
+        yield return new WaitForSeconds( 1.0f );
+        if( hightlightShading )
+        {
+            hightlightShading.enabled = false;
         }
     }
 }

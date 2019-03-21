@@ -12,7 +12,6 @@ public class ItemDynamic : MonoBehaviour, ISoundListener
     [SerializeField] GameObject detectionPrefab;
 
     Outline hightlightShading;
-
     public float maxDistanceForHighlight = 10.0f;
 
     void Awake()
@@ -38,7 +37,16 @@ public class ItemDynamic : MonoBehaviour, ISoundListener
 
     private void OnCollisionEnter( Collision col )
     {
-        if( col.gameObject.tag == "Floor" )
+        if( col.gameObject.tag == "ItemS" || col.gameObject.tag == "Wall" )
+        {
+            if( detachedFromHand == true )
+            {
+                audioSource.Play();
+                EventManager.Instance.NotifyObservers( gameObject.transform.position );
+            }
+            StartCoroutine( "Detect", timer );
+        }
+        else if( col.gameObject.tag == "Floor" )
         {
             if( detachedFromHand == true )
             {

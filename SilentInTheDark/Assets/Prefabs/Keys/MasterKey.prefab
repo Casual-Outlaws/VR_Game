@@ -102,6 +102,8 @@ GameObject:
   - component: {fileID: 9160334993060105414}
   - component: {fileID: 7586881088463840689}
   - component: {fileID: 723008312}
+  - component: {fileID: 5200502756227041504}
+  - component: {fileID: 5127888673545930090}
   m_Layer: 0
   m_Name: MasterKey
   m_TagString: Untagged
@@ -140,6 +142,7 @@ MonoBehaviour:
   isMasterKey: 1
   keyInfoText: {fileID: 2097733559}
   acquirableTime: 3
+  maxDistanceForHighlight: 10
 --- !u!114 &723008312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,6 +194,37 @@ MonoBehaviour:
   handFollowTransform: 1
   highlightOnHover: 1
   hideHighlight: []
+--- !u!114 &5200502756227041504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8243445126379768598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f882e7216fe87b44fa52309d1a56dc40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 0.5948985, g: 0.9150943, b: 0.19424175, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
+--- !u!114 &5127888673545930090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8243445126379768598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3466c7dedeaa50d4694fed36bdb2aa90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDistanceForHighlight: 10
 --- !u!1001 &187418270293250351
 PrefabInstance:
   m_ObjectHideFlags: 0

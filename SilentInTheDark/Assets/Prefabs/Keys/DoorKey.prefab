@@ -103,6 +103,8 @@ GameObject:
   - component: {fileID: 6769001528920479347}
   - component: {fileID: 7793689195026421457}
   - component: {fileID: 1725234423}
+  - component: {fileID: 2912542498833686914}
+  - component: {fileID: 1417270054730154063}
   m_Layer: 0
   m_Name: DoorKey
   m_TagString: Untagged
@@ -192,6 +194,7 @@ MonoBehaviour:
   isMasterKey: 0
   keyInfoText: {fileID: 321482601}
   acquirableTime: 3
+  maxDistanceForHighlight: 10
 --- !u!95 &1725234423
 Animator:
   serializedVersion: 3
@@ -211,6 +214,37 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2912542498833686914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1864793321599888662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f882e7216fe87b44fa52309d1a56dc40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 0.59607846, g: 0.91764706, b: 0.19607843, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
+--- !u!114 &1417270054730154063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1864793321599888662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3466c7dedeaa50d4694fed36bdb2aa90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDistanceForHighlight: 10
 --- !u!1001 &2363500312312269906
 PrefabInstance:
   m_ObjectHideFlags: 0

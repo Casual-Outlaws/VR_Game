@@ -14,6 +14,7 @@ TagManager:
   - ItemS
   - projectile
   - FxTemporaire
+  - Wall
   layers:
   - Default
   - TransparentFX
