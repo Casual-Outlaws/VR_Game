@@ -1999,7 +1999,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1765236400}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5937667, y: 3.41, z: -3.68}
+  m_LocalPosition: {x: 0.5937667, y: 4.29, z: -3.68}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children:
   - {fileID: 183251736}
@@ -2020,6 +2020,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rippleEffect: {fileID: 0}
   detectionPrefab: {fileID: 183251735}
+  maxDistanceForHighlight: 10
 --- !u!54 &1765236406
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2049,7 +2050,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMode: 6
-  outlineColor: {r: 0.21025825, g: 1, b: 0, a: 1}
+  outlineColor: {r: 1, g: 0.81695867, b: 0, a: 1}
   outlineWidth: 2
   precomputeOutline: 0
   bakeKeys: []

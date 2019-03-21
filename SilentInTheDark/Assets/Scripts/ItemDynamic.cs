@@ -18,6 +18,7 @@ public class ItemDynamic : MonoBehaviour, ISoundListener
     void Awake()
     {
         hightlightShading = GetComponent<Outline>();
+        hightlightShading.enabled = false;
 
         rippleEffect = FindObjectOfType<RippleState>();
     }
@@ -80,14 +81,13 @@ public class ItemDynamic : MonoBehaviour, ISoundListener
     IEnumerator ChangeOutline( float time )
     {
         //Debug.LogFormat( "{0} heard sound at {1}", gameObject.ToString(), time );
-        yield return new WaitForSeconds( time );
         if( hightlightShading )
         {
             hightlightShading.enabled = true;
             //hightlightShading.OutlineMode = Outline.Mode.OutlineVisible;
         }
 
-        yield return new WaitForSeconds( 1.0f );
+        yield return new WaitForSeconds( time );
         if( hightlightShading )
         {
             hightlightShading.enabled = false;
