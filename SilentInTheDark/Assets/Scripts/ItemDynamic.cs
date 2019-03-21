@@ -2,22 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemDynamic : MonoBehaviour
+public class ItemDynamic : MonoBehaviour, ISoundListener
 {
     AudioSource audioSource;
     public RippleState rippleEffect;
     bool detachedFromHand = false;
+    Outline hightlightShading;
+
+    void Awake()
+    {
+        hightlightShading = GetComponent<Outline>();
+
+        rippleEffect = FindObjectOfType<RippleState>();
+    }
 
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        EventManager.Instance.RegisterEventListener( this );
+        if( hightlightShading )
+            hightlightShading.enabled = false;
     }
 
     void Update()
     {
     }
 
-    private void OnCollisionEnter(Collision col)
+    private void OnCollisionEnter( Collision col )
     {
         if( col.gameObject.tag == "Floor" )
         {
@@ -37,4 +48,32 @@ public class ItemDynamic : MonoBehaviour
     {
         detachedFromHand = true;
     }
+
+    public void HeardSound( Vector3 posSound )
+    {
+        float distanceSq = gameObject.transform.position.GetDistanceSq( posSound );
+        if( distanceSq < 100 )
+        {
+            StartCoroutine( ChangeOutline( distanceSq / 20 ) );
+        }
+    }
+
+    IEnumerator ChangeOutline( float time )
+    {
+        //Debug.LogFormat( "{0} heard sound at {1}", gameObject.ToString(), time );
+        yield return new WaitForSeconds( time );
+        if( hightlightShading )
+        {
+            hightlightShading.enabled = true;
+            //hightlightShading.OutlineMode = Outline.Mode.OutlineVisible;
+        }
+
+        yield return new WaitForSeconds( 1.0f );
+        if( hightlightShading )
+        {
+            hightlightShading.enabled = false;
+            //hightlightShading.OutlineMode = Outline.Mode.OutlineOff;
+        }
+    }
+
 }

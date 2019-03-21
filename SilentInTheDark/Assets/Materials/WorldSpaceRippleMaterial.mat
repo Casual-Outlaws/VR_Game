@@ -67,7 +67,7 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _RippleDistance: 1.87
+    - _RippleDistance: 5
     - _RippleWidth: 3.13
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1

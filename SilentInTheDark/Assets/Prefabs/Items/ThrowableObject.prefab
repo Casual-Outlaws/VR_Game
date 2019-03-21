@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1718420857022974431}
   - component: {fileID: 4705542284870830450}
   - component: {fileID: 5409921708909886823}
+  - component: {fileID: 6486333024521219402}
   m_Layer: 0
   m_Name: ThrowableObject
   m_TagString: Untagged
@@ -269,3 +270,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6486333024521219402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5842718334464002043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f882e7216fe87b44fa52309d1a56dc40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 1
+  outlineColor: {r: 0.8018868, g: 0.23073156, b: 0.23073156, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 1
+  bakeKeys: []
+  bakeValues: []
