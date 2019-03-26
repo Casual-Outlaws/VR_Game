@@ -5,13 +5,13 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] GameObject target, player, detectionPrefab;
-    [SerializeField] AudioSource audioSource;
-    [SerializeField] AudioClip[] audioClips;
+    [SerializeField] GameObject target, player, detectionPrefab, audioSourceOtherGO;
+    [SerializeField] AudioSource audioSourceMain, audioSourceOther;
+    [SerializeField] AudioClip[] stepsClips, attackClips, idleClips;
     [SerializeField] Animator modelAnim;
     [SerializeField] float speed;
-    float timer, distance;
-    bool isMoving, isWaiting, canMove, stopSound;
+    float timer, distanceToPlayer;
+    bool isMoving, canMove, stopSound, isWon;
     public GameObject outline;
     public bool isTarget; //Reacting to sounds. Has to be public.
     public NavMeshAgent agent;
@@ -26,16 +26,17 @@ public class Enemy : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody>();
         //modelAnim = GetComponent<Animator>();
-        audioSource = GetComponent<AudioSource>();
+        audioSourceMain = GetComponent<AudioSource>();
+        audioSourceOther = GetComponent<AudioSource>();
         agent = GetComponent<NavMeshAgent>();
     }
 
     void Start()
     {
-        isWaiting = false;
         isMoving = true;
         stopSound = false;
         isTarget = true;
+        isWon = false;
         timer = Random.Range(1, 3);
         agent.speed = speed;
         nmPath = new NavMeshPath();
@@ -44,16 +45,21 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         //Random wait time
-        if (isWaiting)
+        if (!canMove)
         {
+            StartCoroutine("PlayIdleSound");
+            agent.isStopped = true;
+            agent.velocity = Vector3.zero;
+            if(!isWon)
             timer -= Time.deltaTime;
             if (timer <= 0)
             {
                 isMoving = true;
-                isWaiting = false;
                 timer = Random.Range(1, 3);
             }
         }
+        else
+            agent.isStopped = false;
 
         //setting bool if enemy can/can't reach the target
         if (isMovingPossible() == true)
@@ -74,16 +80,18 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            audioSource.Stop();
             modelAnim.SetBool("isIdle", true);
             rb.velocity = Vector3.zero;
         }
 
-        distance = Vector3.Distance(this.transform.position, player.transform.position);
-        if (distance > 3)
+        distanceToPlayer = Vector3.Distance(this.transform.position, player.transform.position);
+        //print(distanceToPlayer); need to look into this more
+        if (distanceToPlayer < 4f)
         {
-            stopSound = false;
+            audioSourceOtherGO.SetActive(true);
         }
+        else
+            audioSourceOtherGO.SetActive(false);
     }
 
     //checking if enemy can reach the target
@@ -100,39 +108,42 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == "Detection")
-        {
-            print("Detected");
-        }
-    }
-
-    private void OnCollisionEnter(Collision col)
-    {
-        if (col.gameObject.tag == "Item")
+        if (col.gameObject.tag == "Target")
         {
             StartCoroutine("MoveDecision");
         }
     }
 
+    private void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.tag == "Player")
+        {
+            isWon = true;
+            agent.isStopped = true;
+            agent.velocity = Vector3.zero;
+            modelAnim.SetBool("isAttack", true);
+        }
+    }
 
     IEnumerator PlaySound()
     {
-        if (!audioSource.isPlaying && isMoving)
+        if (!audioSourceMain.isPlaying && isMoving)
         {
-            //audioSource.PlayOneShot(audioClips[0]);
-            audioSource.clip = audioClips[0];
-            audioSource.loop = true;
-            audioSource.Play();
+            audioSourceMain.volume = 1f;
+            audioSourceMain.clip = stepsClips[Random.Range(0, stepsClips.Length)];
+            audioSourceMain.Play();
         }
+        yield return null;
+    }
 
-        //if (audioSource.isPlaying && isMoving && distance <= 3 && stopSound == false)
-        //{
-        //    //audioSource.Stop();
-        //    audioSource.PlayOneShot(audioClips[1]);
-        //    stopSound = true;
-        //}
-
-
+    IEnumerator PlayIdleSound()
+    {
+        if (!audioSourceMain.isPlaying)
+        {
+            audioSourceMain.volume = 0.2f;
+            audioSourceMain.clip = idleClips[Random.Range(0, idleClips.Length)];
+            audioSourceMain.Play();
+        }
         yield return null;
     }
 
@@ -143,10 +154,6 @@ public class Enemy : MonoBehaviour
         if (roll >= 5)
         {
             isMoving = true;
-        }
-        else
-        {
-            isWaiting = true;
         }
         
         yield return null;

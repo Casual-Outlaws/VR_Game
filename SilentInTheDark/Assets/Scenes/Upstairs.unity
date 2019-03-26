@@ -4012,6 +4012,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 46353008594497493, guid: 658010c3089ee6f4db1d5624c8bb3ae7,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 46353008594575277, guid: 658010c3089ee6f4db1d5624c8bb3ae7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4792,7 +4797,12 @@ PrefabInstance:
     - target: {fileID: 5935987239525846641, guid: b057849e2745a1c4e8e029c9132f15e7,
         type: 3}
       propertyPath: speed
-      value: 0.2
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3827143776233998162, guid: b057849e2745a1c4e8e029c9132f15e7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b057849e2745a1c4e8e029c9132f15e7, type: 3}
@@ -6253,15 +6263,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2379326366911640749, guid: 15a9244273fd3084782bcd0d0bf54f02,
-        type: 3}
-      propertyPath: m_Name
-      value: GlobalObjects
-      objectReference: {fileID: 0}
     - target: {fileID: 2379326366911640751, guid: 15a9244273fd3084782bcd0d0bf54f02,
         type: 3}
       propertyPath: speed
       value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2379326366911640749, guid: 15a9244273fd3084782bcd0d0bf54f02,
+        type: 3}
+      propertyPath: m_Name
+      value: GlobalObjects
       objectReference: {fileID: 0}
     - target: {fileID: 2379326366911640750, guid: 15a9244273fd3084782bcd0d0bf54f02,
         type: 3}
