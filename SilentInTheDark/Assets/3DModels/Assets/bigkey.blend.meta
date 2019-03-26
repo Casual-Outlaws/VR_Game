@@ -23,6 +23,9 @@ ModelImporter:
     4300000: Icosphere
     4300002: Torus
     4300004: Sphere
+    6400000: Icosphere
+    6400002: Sphere
+    6400004: Torus
     7400000: Default Take
     9500000: //RootNode
   externalObjects: {}
@@ -58,7 +61,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     useSRGBMaterialColor: 1
     importVisibility: 1
     importBlendShapes: 1
