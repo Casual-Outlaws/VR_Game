@@ -25,12 +25,15 @@ public class ItemStatic : MonoBehaviour, ISoundListener
         
     }
 
-    public void HeardSound( Vector3 posSound )
+    public void HeardSound( RoomEvent eventType, Vector3 position )
     {
-        float distanceSq = gameObject.transform.position.GetDistanceSq( posSound );
-        if( distanceSq < maxDistanceForHighlight * maxDistanceForHighlight )
+        if( eventType == RoomEvent.OBJECT_THREW )
         {
-            StartCoroutine( ChangeOutline( distanceSq / ( 2 * maxDistanceForHighlight ) ) );
+            float distanceSq = gameObject.transform.position.GetDistanceSq( position );
+            if( distanceSq < maxDistanceForHighlight * maxDistanceForHighlight )
+            {
+                StartCoroutine( ChangeOutline( distanceSq / ( 2 * maxDistanceForHighlight ) ) );
+            }
         }
     }
 

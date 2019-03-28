@@ -6,8 +6,14 @@ using System.Threading.Tasks;
 
 using UnityEngine;
 
+public enum RoomEvent
+{
+    OBJECT_THREW,
+    PLYAER_TELEPORTED,
+}
+
 public interface ISoundListener
 {
-    void HeardSound( Vector3 position );
+    void HeardSound( RoomEvent eventType, Vector3 position );
 }
 

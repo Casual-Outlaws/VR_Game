@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, ISoundListener
 {
     [SerializeField] GameObject target, player, detectionPrefab, audioSourceOtherGO;
     [SerializeField] AudioSource audioSourceMain, audioSourceOther;
@@ -40,6 +40,7 @@ public class Enemy : MonoBehaviour
         timer = Random.Range(1, 3);
         agent.speed = speed;
         nmPath = new NavMeshPath();
+        EventManager.Instance.RegisterEventListener( this );
     }
 
     void Update()
@@ -166,4 +167,20 @@ public class Enemy : MonoBehaviour
         yield return new WaitForSeconds(2);
         StartCoroutine("SpawnDetectionPrefab");
     }
+
+    public void HeardSound( RoomEvent eventType, Vector3 location )
+    {
+        if( eventType == RoomEvent.OBJECT_THREW )
+        {
+            // start to investigate where the sound come
+            //Debug.LogFormat( "heard sound at {0}", location );
+        }
+        else if( eventType == RoomEvent.PLYAER_TELEPORTED )
+        {
+            // increment player teleportation count here
+            // ex. numPlayerTeleport += 1;
+            //Debug.LogFormat( "player teleport to {0}", location );
+        }
+    }
+
 }

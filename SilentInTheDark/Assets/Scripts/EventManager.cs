@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class EventManager : MonoBehaviour
 {
     List<ISoundListener> eventListeners;
@@ -36,11 +37,11 @@ public class EventManager : MonoBehaviour
         eventListeners.Add( observer );
     }
 
-    public void NotifyObservers( Vector3 location )
+    public void NotifyObservers( RoomEvent eventType, Vector3 location )
     {
         foreach( var observer in eventListeners )
         {
-            observer.HeardSound( location );
+            observer.HeardSound( eventType, location );
         }
     }
 }

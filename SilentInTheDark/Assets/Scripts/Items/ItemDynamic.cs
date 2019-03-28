@@ -42,7 +42,7 @@ public class ItemDynamic : MonoBehaviour, ISoundListener
             if( detachedFromHand == true )
             {
                 audioSource.Play();
-                EventManager.Instance.NotifyObservers( gameObject.transform.position );
+                EventManager.Instance.NotifyObservers( RoomEvent.OBJECT_THREW, gameObject.transform.position );
             }
             StartCoroutine( "Detect", timer );
         }
@@ -54,7 +54,7 @@ public class ItemDynamic : MonoBehaviour, ISoundListener
                 if( rippleEffect )
                     rippleEffect.RippleOrigin = transform.position;
 
-                EventManager.Instance.NotifyObservers( gameObject.transform.position );
+                EventManager.Instance.NotifyObservers( RoomEvent.OBJECT_THREW, gameObject.transform.position );
             }
             detachedFromHand = false;
             StartCoroutine("Detect", timer);
@@ -77,12 +77,15 @@ public class ItemDynamic : MonoBehaviour, ISoundListener
         timer = 0;
     }
 
-    public void HeardSound( Vector3 posSound )
+    public void HeardSound( RoomEvent eventType, Vector3 posSound )
     {
-        float distanceSq = gameObject.transform.position.GetDistanceSq( posSound );
-        if( distanceSq < maxDistanceForHighlight * maxDistanceForHighlight )
+        if( eventType == RoomEvent.OBJECT_THREW )
         {
-            StartCoroutine( ChangeOutline( distanceSq / ( 2 * maxDistanceForHighlight ) ) );
+            float distanceSq = gameObject.transform.position.GetDistanceSq( posSound );
+            if( distanceSq < maxDistanceForHighlight * maxDistanceForHighlight )
+            {
+                StartCoroutine( ChangeOutline( distanceSq / ( 2 * maxDistanceForHighlight ) ) );
+            }
         }
     }
 

@@ -61,7 +61,7 @@ public class SimpleEnemyAI : MonoBehaviour, ISoundListener
         }
     }
 
-    public void HeardSound( Vector3 location )
+    public void HeardSound( RoomEvent eventType, Vector3 location )
     {
         if( agent.CalculatePath( location, nmPath ) )
         {
