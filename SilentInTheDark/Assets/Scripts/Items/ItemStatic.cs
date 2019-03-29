@@ -27,7 +27,7 @@ public class ItemStatic : MonoBehaviour, ISoundListener
 
     public void HeardSound( RoomEvent eventType, Vector3 position )
     {
-        if( eventType == RoomEvent.OBJECT_THREW )
+        if( eventType == RoomEvent.OBJECT_THREW || eventType == RoomEvent.PLYAER_TELEPORTED )
         {
             float distanceSq = gameObject.transform.position.GetDistanceSq( position );
             if( distanceSq < maxDistanceForHighlight * maxDistanceForHighlight )

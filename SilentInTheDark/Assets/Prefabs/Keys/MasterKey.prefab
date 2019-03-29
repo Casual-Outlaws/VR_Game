@@ -141,7 +141,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMasterKey: 1
   keyInfoText: {fileID: 2097733559}
-  acquirableTime: 3
+  acquirableTime: 1
   maxDistanceForHighlight: 10
 --- !u!114 &723008312
 MonoBehaviour:

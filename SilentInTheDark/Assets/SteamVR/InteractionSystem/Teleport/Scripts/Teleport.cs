@@ -891,11 +891,10 @@ namespace Valve.VR.InteractionSystem
 			{
 				Vector3 playerFeetOffset = player.trackingOriginTransform.position - player.feetPositionGuess;
 				player.trackingOriginTransform.position = teleportPosition + playerFeetOffset;
-			}
-			else
-			{
-				teleportingToMarker.TeleportPlayer( pointedAtPosition );
-			}
+            }
+            // to notify a teleporation of the player
+			teleportingToMarker.TeleportPlayer( pointedAtPosition );
+
 
 			Teleport.Player.Send( pointedAtTeleportMarker );
 		}

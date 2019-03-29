@@ -79,7 +79,7 @@ public class ItemDynamic : MonoBehaviour, ISoundListener
 
     public void HeardSound( RoomEvent eventType, Vector3 posSound )
     {
-        if( eventType == RoomEvent.OBJECT_THREW )
+        if( eventType == RoomEvent.OBJECT_THREW || eventType == RoomEvent.PLYAER_TELEPORTED )
         {
             float distanceSq = gameObject.transform.position.GetDistanceSq( posSound );
             if( distanceSq < maxDistanceForHighlight * maxDistanceForHighlight )

@@ -193,7 +193,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMasterKey: 0
   keyInfoText: {fileID: 321482601}
-  acquirableTime: 3
+  acquirableTime: 1
   maxDistanceForHighlight: 10
 --- !u!95 &1725234423
 Animator:
