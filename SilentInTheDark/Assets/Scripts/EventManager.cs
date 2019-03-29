@@ -37,6 +37,11 @@ public class EventManager : MonoBehaviour
         eventListeners.Add( observer );
     }
 
+    public void UnregisterEventListener( ISoundListener observer )
+    {
+        eventListeners.Remove( observer );
+    }
+
     public void NotifyObservers( RoomEvent eventType, Vector3 location )
     {
         foreach( var observer in eventListeners )

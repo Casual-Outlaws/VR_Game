@@ -156,7 +156,7 @@ public class Key : MonoBehaviour, ISoundListener
     {
         isAcquired = true;
         playerInventory.AddKey( isMasterKey );
-
+        EventManager.Instance.UnregisterEventListener( this );
 
         yield return new WaitForSeconds( 2.0f );
         Destroy( gameObject );

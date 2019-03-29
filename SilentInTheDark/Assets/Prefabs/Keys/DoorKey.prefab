@@ -104,7 +104,6 @@ GameObject:
   - component: {fileID: 7793689195026421457}
   - component: {fileID: 1725234423}
   - component: {fileID: 2912542498833686914}
-  - component: {fileID: 1417270054730154063}
   m_Layer: 0
   m_Name: DoorKey
   m_TagString: Untagged
@@ -232,19 +231,6 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
---- !u!114 &1417270054730154063
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1864793321599888662}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3466c7dedeaa50d4694fed36bdb2aa90, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxDistanceForHighlight: 10
 --- !u!1001 &3586801704211929950
 PrefabInstance:
   m_ObjectHideFlags: 0
