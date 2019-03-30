@@ -5079,6 +5079,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5935987239525846640}
     m_Modifications:
+    - target: {fileID: 2080583525793019992, guid: 9e924050921a59e4fa51dcf9e4b86cc5,
+        type: 3}
+      propertyPath: m_Name
+      value: DetectHighlight
+      objectReference: {fileID: 0}
     - target: {fileID: 7390857645269279588, guid: 9e924050921a59e4fa51dcf9e4b86cc5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5133,11 +5138,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2080583525793019992, guid: 9e924050921a59e4fa51dcf9e4b86cc5,
-        type: 3}
-      propertyPath: m_Name
-      value: DetectHighlight
       objectReference: {fileID: 0}
     - target: {fileID: 2721382759898994348, guid: 9e924050921a59e4fa51dcf9e4b86cc5,
         type: 3}
