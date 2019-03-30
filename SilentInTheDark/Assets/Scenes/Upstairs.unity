@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731725, g: 0.13414745, b: 0.12107873, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1003,6 +1003,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: a4777c479cc8fa849b696c9b8b213e88, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ef7ea779c4b06c44dbe1512ffb506838, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4777c479cc8fa849b696c9b8b213e88, type: 3}
 --- !u!1001 &380865377
@@ -1456,7 +1460,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b6a310b31c8715448b1423389387a9f1, type: 2}
+  - {fileID: 2100000, guid: 2e396b6df87a3c94e8e20e922295ec69, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6513,15 +6517,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2379326366911640749, guid: 15a9244273fd3084782bcd0d0bf54f02,
-        type: 3}
-      propertyPath: m_Name
-      value: GlobalObjects
-      objectReference: {fileID: 0}
     - target: {fileID: 2379326366911640751, guid: 15a9244273fd3084782bcd0d0bf54f02,
         type: 3}
       propertyPath: speed
       value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2379326366911640749, guid: 15a9244273fd3084782bcd0d0bf54f02,
+        type: 3}
+      propertyPath: m_Name
+      value: GlobalObjects
       objectReference: {fileID: 0}
     - target: {fileID: 2379326366911640750, guid: 15a9244273fd3084782bcd0d0bf54f02,
         type: 3}
