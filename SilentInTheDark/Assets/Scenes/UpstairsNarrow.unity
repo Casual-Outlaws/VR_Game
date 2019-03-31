@@ -261,6 +261,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1370418415}
     m_Modifications:
+    - target: {fileID: 989465992483230782, guid: 772c7a1a5dd35d848be5264e563203cf,
+        type: 3}
+      propertyPath: m_Name
+      value: StudyRoomTeleportArea
+      objectReference: {fileID: 0}
     - target: {fileID: 989465992483230781, guid: 772c7a1a5dd35d848be5264e563203cf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -330,11 +335,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.45565918
-      objectReference: {fileID: 0}
-    - target: {fileID: 989465992483230782, guid: 772c7a1a5dd35d848be5264e563203cf,
-        type: 3}
-      propertyPath: m_Name
-      value: StudyRoomTeleportArea
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 772c7a1a5dd35d848be5264e563203cf, type: 3}
@@ -562,6 +562,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1370418415}
     m_Modifications:
+    - target: {fileID: 989465992483230782, guid: 772c7a1a5dd35d848be5264e563203cf,
+        type: 3}
+      propertyPath: m_Name
+      value: NurseyTeleportArea
+      objectReference: {fileID: 0}
     - target: {fileID: 989465992483230781, guid: 772c7a1a5dd35d848be5264e563203cf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -632,11 +637,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.28580123
       objectReference: {fileID: 0}
-    - target: {fileID: 989465992483230782, guid: 772c7a1a5dd35d848be5264e563203cf,
-        type: 3}
-      propertyPath: m_Name
-      value: NurseyTeleportArea
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 772c7a1a5dd35d848be5264e563203cf, type: 3}
 --- !u!4 &127793343 stripped
@@ -652,6 +652,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1370418415}
     m_Modifications:
+    - target: {fileID: 989465992483230782, guid: 772c7a1a5dd35d848be5264e563203cf,
+        type: 3}
+      propertyPath: m_Name
+      value: BedRoomTeleportArea
+      objectReference: {fileID: 0}
     - target: {fileID: 989465992483230781, guid: 772c7a1a5dd35d848be5264e563203cf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -721,11 +726,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.24128106
-      objectReference: {fileID: 0}
-    - target: {fileID: 989465992483230782, guid: 772c7a1a5dd35d848be5264e563203cf,
-        type: 3}
-      propertyPath: m_Name
-      value: BedRoomTeleportArea
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 772c7a1a5dd35d848be5264e563203cf, type: 3}
@@ -1512,6 +1512,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1370418415}
     m_Modifications:
+    - target: {fileID: 989465992483230782, guid: 772c7a1a5dd35d848be5264e563203cf,
+        type: 3}
+      propertyPath: m_Name
+      value: HallwayTeleportArea
+      objectReference: {fileID: 0}
     - target: {fileID: 989465992483230781, guid: 772c7a1a5dd35d848be5264e563203cf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1582,11 +1587,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.7820378
       objectReference: {fileID: 0}
-    - target: {fileID: 989465992483230782, guid: 772c7a1a5dd35d848be5264e563203cf,
-        type: 3}
-      propertyPath: m_Name
-      value: HallwayTeleportArea
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 772c7a1a5dd35d848be5264e563203cf, type: 3}
 --- !u!4 &532138304 stripped
@@ -1602,6 +1602,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 886479726}
     m_Modifications:
+    - target: {fileID: 7162819193478221075, guid: cdb57f62adf0b9940a8029746c8f4c3e,
+        type: 3}
+      propertyPath: m_Name
+      value: Sink Prefab
+      objectReference: {fileID: 0}
     - target: {fileID: 2688674942337437089, guid: cdb57f62adf0b9940a8029746c8f4c3e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1661,11 +1666,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 0.6551
-      objectReference: {fileID: 0}
-    - target: {fileID: 7162819193478221075, guid: cdb57f62adf0b9940a8029746c8f4c3e,
-        type: 3}
-      propertyPath: m_Name
-      value: Sink Prefab
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cdb57f62adf0b9940a8029746c8f4c3e, type: 3}
@@ -3270,6 +3270,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1370418415}
     m_Modifications:
+    - target: {fileID: 989465992483230782, guid: 772c7a1a5dd35d848be5264e563203cf,
+        type: 3}
+      propertyPath: m_Name
+      value: BathRoomTeleportArea
+      objectReference: {fileID: 0}
     - target: {fileID: 989465992483230781, guid: 772c7a1a5dd35d848be5264e563203cf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3339,11 +3344,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.27829406
-      objectReference: {fileID: 0}
-    - target: {fileID: 989465992483230782, guid: 772c7a1a5dd35d848be5264e563203cf,
-        type: 3}
-      propertyPath: m_Name
-      value: BathRoomTeleportArea
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 772c7a1a5dd35d848be5264e563203cf, type: 3}
@@ -4366,6 +4366,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 886479726}
     m_Modifications:
+    - target: {fileID: 7162819193478221075, guid: d2f412a687c0de246b18a50c0707dbba,
+        type: 3}
+      propertyPath: m_Name
+      value: Bathtub Prefab
+      objectReference: {fileID: 0}
     - target: {fileID: 2688674942337437089, guid: d2f412a687c0de246b18a50c0707dbba,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4420,11 +4425,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7162819193478221075, guid: d2f412a687c0de246b18a50c0707dbba,
-        type: 3}
-      propertyPath: m_Name
-      value: Bathtub Prefab
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2f412a687c0de246b18a50c0707dbba, type: 3}
@@ -4807,6 +4807,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 886479726}
     m_Modifications:
+    - target: {fileID: 7162819193478221075, guid: fcde8cfb849d66d4fb31dc46928f9230,
+        type: 3}
+      propertyPath: m_Name
+      value: Toilet Prefab
+      objectReference: {fileID: 0}
     - target: {fileID: 2688674942337437089, guid: fcde8cfb849d66d4fb31dc46928f9230,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4861,11 +4866,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7162819193478221075, guid: fcde8cfb849d66d4fb31dc46928f9230,
-        type: 3}
-      propertyPath: m_Name
-      value: Toilet Prefab
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fcde8cfb849d66d4fb31dc46928f9230, type: 3}
@@ -5076,11 +5076,6 @@ PrefabInstance:
       propertyPath: speed
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 3827143776233998162, guid: b057849e2745a1c4e8e029c9132f15e7,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5935987239525846644, guid: b057849e2745a1c4e8e029c9132f15e7,
         type: 3}
       propertyPath: m_Radius
@@ -5095,6 +5090,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Center.y
       value: 0.9286864
+      objectReference: {fileID: 0}
+    - target: {fileID: 3827143776233998162, guid: b057849e2745a1c4e8e029c9132f15e7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b057849e2745a1c4e8e029c9132f15e7, type: 3}
@@ -5505,6 +5505,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1370418415}
     m_Modifications:
+    - target: {fileID: 989465992483230782, guid: 772c7a1a5dd35d848be5264e563203cf,
+        type: 3}
+      propertyPath: m_Name
+      value: GuestRoomTeleportArea
+      objectReference: {fileID: 0}
     - target: {fileID: 989465992483230781, guid: 772c7a1a5dd35d848be5264e563203cf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5574,11 +5579,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.3511273
-      objectReference: {fileID: 0}
-    - target: {fileID: 989465992483230782, guid: 772c7a1a5dd35d848be5264e563203cf,
-        type: 3}
-      propertyPath: m_Name
-      value: GuestRoomTeleportArea
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 772c7a1a5dd35d848be5264e563203cf, type: 3}
@@ -6249,6 +6249,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1370418415}
     m_Modifications:
+    - target: {fileID: 989465992483230782, guid: 772c7a1a5dd35d848be5264e563203cf,
+        type: 3}
+      propertyPath: m_Name
+      value: ClosetTeleportArea
+      objectReference: {fileID: 0}
     - target: {fileID: 989465992483230781, guid: 772c7a1a5dd35d848be5264e563203cf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6318,11 +6323,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.16757843
-      objectReference: {fileID: 0}
-    - target: {fileID: 989465992483230782, guid: 772c7a1a5dd35d848be5264e563203cf,
-        type: 3}
-      propertyPath: m_Name
-      value: ClosetTeleportArea
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 772c7a1a5dd35d848be5264e563203cf, type: 3}
@@ -6791,17 +6791,17 @@ PrefabInstance:
     - target: {fileID: 2379326366911640750, guid: 15a9244273fd3084782bcd0d0bf54f02,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.0309076
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2379326366911640750, guid: 15a9244273fd3084782bcd0d0bf54f02,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -23.522064
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2379326366911640750, guid: 15a9244273fd3084782bcd0d0bf54f02,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 16.429401
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2379326366911640750, guid: 15a9244273fd3084782bcd0d0bf54f02,
         type: 3}
