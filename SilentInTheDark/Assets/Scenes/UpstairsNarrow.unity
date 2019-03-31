@@ -3552,6 +3552,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8567760813820102018, guid: ce21c4882c58a9846a283b660633c98c,
+        type: 3}
+      propertyPath: switchToScene
+      value: Downstairs
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce21c4882c58a9846a283b660633c98c, type: 3}
 --- !u!1001 &1171571628
