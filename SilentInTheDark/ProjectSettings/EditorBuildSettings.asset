@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Upstairs.unity
     guid: 040877c06e635984dbecd3cbcbec91eb
   - enabled: 1
+    path: Assets/Scenes/UpstairsNarrow.unity
+    guid: cd33cf3ced55eeb469d99944af38ccf4
+  - enabled: 1
     path: Assets/Scenes/Downstairs.unity
     guid: 80b0742585939ea4085e9d438fa2a585
   - enabled: 1
