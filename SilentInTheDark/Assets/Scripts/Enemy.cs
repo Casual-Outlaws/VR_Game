@@ -18,6 +18,7 @@ public class Enemy : MonoBehaviour, ISoundListener
     NavMeshPath nmPath;
     Rigidbody rb;
     SphereCollider enemyCollider;
+    [SerializeField] GameObject gameUI;
 
     [SerializeField] DetectionHighlight highlightScript;
 
@@ -42,6 +43,8 @@ public class Enemy : MonoBehaviour, ISoundListener
         timer = Random.Range(1, 3);
         agent.speed = speed;
         isAttacked = false;
+        if( gameUI )
+            gameUI.SetActive( false );
         nmPath = new NavMeshPath();
         EventManager.Instance.RegisterEventListener( this );
         PlayIdleSound();
@@ -133,6 +136,8 @@ public class Enemy : MonoBehaviour, ISoundListener
             Debug.Log( "Attack the player triggered" );
             EventManager.Instance.NotifyObservers( RoomEvent.PLAYER_KILLED, col.transform.position );
             isAttacked = true;
+            if( gameUI )
+                gameUI.SetActive( true );
         }
     }
 
