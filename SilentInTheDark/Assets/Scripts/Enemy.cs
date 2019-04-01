@@ -11,12 +11,13 @@ public class Enemy : MonoBehaviour, ISoundListener
     [SerializeField] Animator modelAnim;
     [SerializeField] float speed;
     float timer, distanceToPlayer;
-    bool isMoving, canMove, stopSound, isWon;
+    bool isMoving, canMove, stopSound, isWon, isAttacked;
     public GameObject outline;
     public bool isTarget; //Reacting to sounds. Has to be public.
     public NavMeshAgent agent;
     NavMeshPath nmPath;
     Rigidbody rb;
+    SphereCollider enemyCollider;
 
     [SerializeField] DetectionHighlight highlightScript;
 
@@ -29,6 +30,7 @@ public class Enemy : MonoBehaviour, ISoundListener
         audioSourceMain = GetComponent<AudioSource>();
         audioSourceOther = GetComponent<AudioSource>();
         agent = GetComponent<NavMeshAgent>();
+        enemyCollider = GetComponent<SphereCollider>();
     }
 
     void Start()
@@ -39,55 +41,68 @@ public class Enemy : MonoBehaviour, ISoundListener
         isWon = false;
         timer = Random.Range(1, 3);
         agent.speed = speed;
+        isAttacked = false;
         nmPath = new NavMeshPath();
         EventManager.Instance.RegisterEventListener( this );
+        PlayIdleSound();
     }
 
     void Update()
     {
-        //Random wait time
-        if (!canMove)
+        // enemy move behavior
+        // 0. if game ends, don't change anything
+        // 1. stay idle
+        // 2. if it hears the sound, try to reach them (event)
+        // 3. if the position is not reachable, just ignore it
+        // 4. if there is no sound, try to move random position near him.
+        // 5. if it detects the player, kill him (trigger)
+        if( GameManager.Instance.gameState == GameState.LostGame )
         {
-            StartCoroutine("PlayIdleSound");
             agent.isStopped = true;
-            agent.velocity = Vector3.zero;
-            if(!isWon)
+            return;
+        }
+
+        if( agent.isStopped )
+        {
             timer -= Time.deltaTime;
-            if (timer <= 0)
+            if( timer <= 0 )
             {
-                isMoving = true;
-                timer = Random.Range(1, 3);
-            }
-        }
-        else
-            agent.isStopped = false;
+                timer = Random.Range( 2, 4 );
+                canMove = isMovingPossible( target.transform.position );
+                modelAnim.SetBool( "isIdle", !canMove );
+                isMoving = canMove;
 
-        //setting bool if enemy can/can't reach the target
-        if (isMovingPossible() == true)
-        {
-            canMove = true;
-        }
-        else
-            canMove = false;
-
-        if (isMoving && canMove)
-        {
-            if (isTarget)
-            {
-                agent.destination = target.transform.position;
-                StartCoroutine("PlaySound");
-                modelAnim.SetBool("isIdle", false);
+                if( canMove )
+                {
+                    agent.SetDestination( target.transform.position );
+                    agent.isStopped = false;
+                    PlaySound();
+                }
+                else
+                {
+                    PlayIdleSound();
+                }
             }
         }
         else
         {
-            modelAnim.SetBool("isIdle", true);
-            rb.velocity = Vector3.zero;
+            //Debug.LogFormat( "distance to {0} is {1}", agent.destination, agent.remainingDistance );
+            if( agent.remainingDistance < agent.stoppingDistance )
+            {
+                agent.isStopped = true;
+                modelAnim.SetBool( "isIdle", true );
+                PlayIdleSound();
+            }
         }
 
-        distanceToPlayer = Vector3.Distance(this.transform.position, player.transform.position);
+
+        distanceToPlayer = transform.position.GetDistanceSq( player.transform.position );
+        if( isAttacked && distanceToPlayer > enemyCollider.radius * enemyCollider.radius )
+        {
+            isAttacked = false;
+        }
         //print(distanceToPlayer); need to look into this more
-        if (distanceToPlayer < 4f)
+        if (distanceToPlayer < 4f * 4f)
         {
             audioSourceOtherGO.SetActive(true);
         }
@@ -96,15 +111,10 @@ public class Enemy : MonoBehaviour, ISoundListener
     }
 
     //checking if enemy can reach the target
-    bool isMovingPossible()
+    bool isMovingPossible( Vector3 targetPos )
     {
-        agent.CalculatePath(target.transform.position, nmPath);
-        if (nmPath.status != NavMeshPathStatus.PathComplete)
-        {
-            return false;
-        }
-        else
-            return true;
+        agent.CalculatePath( targetPos, nmPath );
+        return nmPath.status == NavMeshPathStatus.PathComplete;
     }
 
     private void OnTriggerEnter(Collider col)
@@ -113,16 +123,16 @@ public class Enemy : MonoBehaviour, ISoundListener
         {
             StartCoroutine("MoveDecision");
         }
-    }
-
-    private void OnCollisionEnter(Collision col)
-    {
-        if (col.gameObject.tag == "Player")
+        else if( col.gameObject.tag == "Player" && isAttacked == false )
         {
             isWon = true;
             agent.isStopped = true;
             agent.velocity = Vector3.zero;
-            modelAnim.SetBool("isAttack", true);
+            modelAnim.SetTrigger( "attack" );
+            transform.LookAt( col.gameObject.transform );
+            Debug.Log( "Attack the player triggered" );
+            EventManager.Instance.NotifyObservers( RoomEvent.PLAYER_KILLED, col.transform.position );
+            isAttacked = true;
         }
     }
 
@@ -170,16 +180,17 @@ public class Enemy : MonoBehaviour, ISoundListener
 
     public void HeardSound( RoomEvent eventType, Vector3 location )
     {
-        if( eventType == RoomEvent.OBJECT_THREW )
+        if( eventType == RoomEvent.OBJECT_THREW || 
+            eventType == RoomEvent.PLYAER_TELEPORTED )
         {
-            // start to investigate where the sound come
-            //Debug.LogFormat( "heard sound at {0}", location );
-        }
-        else if( eventType == RoomEvent.PLYAER_TELEPORTED )
-        {
-            // increment player teleportation count here
-            // ex. numPlayerTeleport += 1;
-            //Debug.LogFormat( "player teleport to {0}", location );
+            if( isMovingPossible( location ) )
+            {
+                Debug.LogFormat( "Sound detected at {0}, move", location );
+                target.transform.position = location;
+                agent.SetDestination( location );
+                modelAnim.SetBool( "isIdle", false );
+                agent.isStopped = false;
+            }
         }
     }
 

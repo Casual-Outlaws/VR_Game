@@ -1,14 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Valve.VR.InteractionSystem;
 
 public class PlayerControl : MonoBehaviour, ISoundListener
 {
     RippleState rippleEffect;
+    Teleport teleportSystem;
 
     void Awake()
     {
         rippleEffect = FindObjectOfType<RippleState>();
+        teleportSystem = FindObjectOfType<Teleport>();
     }
 
     // Start is called before the first frame update
@@ -29,6 +32,14 @@ public class PlayerControl : MonoBehaviour, ISoundListener
         {
             if( rippleEffect )
                 rippleEffect.RippleOrigin = transform.position;
+        }
+        else if( eventType == RoomEvent.PLAYER_KILLED )
+        {
+            if( teleportSystem )
+            {
+                teleportSystem.enabled = false;
+            }
+            GameManager.Instance.gameState = GameState.LostGame;
         }
     }
 }

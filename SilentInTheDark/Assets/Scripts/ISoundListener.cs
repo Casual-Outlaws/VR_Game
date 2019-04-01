@@ -10,6 +10,7 @@ public enum RoomEvent
 {
     OBJECT_THREW,
     PLYAER_TELEPORTED,
+    PLAYER_KILLED,
 }
 
 public interface ISoundListener
