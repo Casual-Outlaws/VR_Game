@@ -5,7 +5,7 @@ using UnityEngine;
 public class ItemStatic : MonoBehaviour, ISoundListener
 {
     Outline hightlightShading;
-    public float maxDistanceForHighlight = 10.0f;
+    public float maxDistanceForHighlight = 6.0f;
 
     void Awake()
     {

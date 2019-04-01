@@ -24,7 +24,7 @@ public class Key : MonoBehaviour, ISoundListener
     private Inventory playerInventory;
 
     Outline hightlightShading;
-    public float maxDistanceForHighlight = 10.0f;
+    public float maxDistanceForHighlight = 6.0f;
 
     private void Awake()
     {

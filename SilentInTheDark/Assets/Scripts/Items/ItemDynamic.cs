@@ -12,7 +12,7 @@ public class ItemDynamic : MonoBehaviour, ISoundListener
     [SerializeField] GameObject detectionPrefab;
 
     Outline hightlightShading;
-    public float maxDistanceForHighlight = 10.0f;
+    public float maxDistanceForHighlight = 6.0f;
 
     void Awake()
     {
