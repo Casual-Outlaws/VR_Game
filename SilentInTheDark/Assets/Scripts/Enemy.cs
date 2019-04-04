@@ -5,13 +5,19 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour, ISoundListener
 {
+    enum EnemyState
+    {
+        Idle, Walk, Attack
+    }
+    EnemyState currentState = EnemyState.Idle;
+
     [SerializeField] GameObject target, player, detectionPrefab, audioSourceOtherGO;
     [SerializeField] AudioSource audioSourceMain, audioSourceOther;
     [SerializeField] AudioClip[] stepsClips, attackClips, idleClips;
     [SerializeField] Animator modelAnim;
     [SerializeField] float speed;
     float timer, distanceToPlayer;
-    bool isMoving, canMove, stopSound, isWon, isAttacked;
+    bool isMoving, stopSound, isWon, isAttacked;
     public GameObject outline;
     public bool isTarget; //Reacting to sounds. Has to be public.
     public NavMeshAgent agent;
@@ -36,7 +42,7 @@ public class Enemy : MonoBehaviour, ISoundListener
 
     void Start()
     {
-        isMoving = true;
+        isMoving = false;
         stopSound = false;
         isTarget = true;
         isWon = false;
@@ -47,7 +53,6 @@ public class Enemy : MonoBehaviour, ISoundListener
             gameUI.SetActive( false );
         nmPath = new NavMeshPath();
         EventManager.Instance.RegisterEventListener( this );
-        PlayIdleSound();
     }
 
     void Update()
@@ -62,7 +67,6 @@ public class Enemy : MonoBehaviour, ISoundListener
         if( GameManager.Instance.gameState == GameState.LostGame )
         {
             agent.isStopped = true;
-            return;
         }
 
         if( agent.isStopped )
@@ -71,7 +75,7 @@ public class Enemy : MonoBehaviour, ISoundListener
             if( timer <= 0 )
             {
                 timer = Random.Range( 2, 4 );
-                canMove = isMovingPossible( target.transform.position );
+                bool canMove = isMovingPossible( target.transform.position );
                 modelAnim.SetBool( "isIdle", !canMove );
                 isMoving = canMove;
 
@@ -79,11 +83,11 @@ public class Enemy : MonoBehaviour, ISoundListener
                 {
                     agent.SetDestination( target.transform.position );
                     agent.isStopped = false;
-                    PlaySound();
+                    currentState = EnemyState.Walk;
                 }
                 else
                 {
-                    PlayIdleSound();
+                    currentState = EnemyState.Idle;
                 }
             }
         }
@@ -94,23 +98,26 @@ public class Enemy : MonoBehaviour, ISoundListener
             {
                 agent.isStopped = true;
                 modelAnim.SetBool( "isIdle", true );
-                PlayIdleSound();
+                currentState = EnemyState.Idle;
             }
         }
 
 
-        distanceToPlayer = transform.position.GetDistanceSq( player.transform.position );
+        distanceToPlayer = transform.position.Get2DDistanceSq( player.transform.position );
         if( isAttacked && distanceToPlayer > enemyCollider.radius * enemyCollider.radius )
         {
             isAttacked = false;
+            currentState = EnemyState.Idle;
         }
         //print(distanceToPlayer); need to look into this more
-        if (distanceToPlayer < 4f * 4f)
-        {
-            audioSourceOtherGO.SetActive(true);
-        }
-        else
-            audioSourceOtherGO.SetActive(false);
+        //if (distanceToPlayer < 4f * 4f)
+        //{
+        //    audioSourceOtherGO.SetActive(true);
+        //}
+        //else
+        //    audioSourceOtherGO.SetActive(false);
+
+        PlayStateSound();
     }
 
     //checking if enemy can reach the target
@@ -133,26 +140,43 @@ public class Enemy : MonoBehaviour, ISoundListener
             agent.velocity = Vector3.zero;
             modelAnim.SetTrigger( "attack" );
             transform.LookAt( col.gameObject.transform );
-            Debug.Log( "Attack the player triggered" );
+            
             EventManager.Instance.NotifyObservers( RoomEvent.PLAYER_KILLED, col.transform.position );
             isAttacked = true;
+            currentState = EnemyState.Attack;
             if( gameUI )
                 gameUI.SetActive( true );
         }
     }
 
-    IEnumerator PlaySound()
+    void PlayStateSound()
     {
-        if (!audioSourceMain.isPlaying && isMoving)
+        switch( currentState )
+        {
+            case EnemyState.Idle:
+                PlayIdleSound();
+                break;
+            case EnemyState.Walk:
+                PlayWalkSound();
+                break;
+            case EnemyState.Attack:
+                PlayAttackSound();
+                break;
+        }
+    }
+
+    void PlayWalkSound()
+    {
+        if (!audioSourceMain.isPlaying )
         {
             audioSourceMain.volume = 1f;
             audioSourceMain.clip = stepsClips[Random.Range(0, stepsClips.Length)];
             audioSourceMain.Play();
         }
-        yield return null;
+
     }
 
-    IEnumerator PlayIdleSound()
+    void PlayIdleSound()
     {
         if (!audioSourceMain.isPlaying)
         {
@@ -160,7 +184,17 @@ public class Enemy : MonoBehaviour, ISoundListener
             audioSourceMain.clip = idleClips[Random.Range(0, idleClips.Length)];
             audioSourceMain.Play();
         }
-        yield return null;
+
+    }
+
+    void PlayAttackSound()
+    {
+        if( !audioSourceMain.isPlaying )
+        {
+            audioSourceMain.volume = 0.5f;
+            audioSourceMain.clip = attackClips[Random.Range( 0, attackClips.Length )];
+            audioSourceMain.Play();
+        }
     }
 
     IEnumerator MoveDecision()
@@ -203,6 +237,7 @@ public class Enemy : MonoBehaviour, ISoundListener
         agent.SetDestination( position );
         modelAnim.SetBool( "isIdle", false );
         agent.isStopped = false;
+        currentState = EnemyState.Walk;
     }
 
     IEnumerator InvestigatePosition( Vector3 position )
@@ -218,10 +253,7 @@ public class Enemy : MonoBehaviour, ISoundListener
 
             // I don't know why the y-position of enemy keep decreasing
             // until we find the reason, distance is only be calculated in 2D space
-            // float distSQ = transform.position.GetDistanceSq( position );
-            float dx = ( transform.position.x - position.x );
-            float dz = ( transform.position.z - position.z );
-            float distSQ = dx * dx + dz * dz;
+            float distSQ = transform.position.Get2DDistanceSq( position );
 
             //Vector2 randomPlace = Random.insideUnitCircle * agent.remainingDistance * 0.2f;
             Vector2 randomPlace = Random.insideUnitCircle * distSQ * 0.1f;

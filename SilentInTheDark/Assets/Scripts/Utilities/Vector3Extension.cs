@@ -17,6 +17,13 @@ namespace UnityEngine
             float dz = vec.z - other.z;
             return dx * dx + dy * dy + dz * dz;
         }
+
+        public static float Get2DDistanceSq( this Vector3 vec, Vector3 other )
+        {
+            float dx = vec.x - other.x;
+            float dz = vec.z - other.z;
+            return dx * dx + dz * dz;
+        }
     }
 
 }
