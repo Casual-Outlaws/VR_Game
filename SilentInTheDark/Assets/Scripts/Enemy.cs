@@ -190,13 +190,56 @@ public class Enemy : MonoBehaviour, ISoundListener
         {
             if( isMovingPossible( location ) )
             {
-                Debug.LogFormat( "Sound detected at {0}, move", location );
-                target.transform.position = location;
-                agent.SetDestination( location );
-                modelAnim.SetBool( "isIdle", false );
-                agent.isStopped = false;
+                float distSQ = transform.position.GetDistanceSq( location );
+                //Debug.LogFormat( "Sound detected at {0}, distSq = {1}, remaining = {2}, enemy = {3}", location, distSQ, agent.remainingDistance, transform.position );
+                StartCoroutine( InvestigatePosition(location) );
             }
         }
     }
 
+    void MoveToPoint( Vector3 position )
+    {
+        target.transform.position = position;
+        agent.SetDestination( position );
+        modelAnim.SetBool( "isIdle", false );
+        agent.isStopped = false;
+    }
+
+    IEnumerator InvestigatePosition( Vector3 position )
+    {
+        MoveToPoint( position );
+        yield return null;
+
+        bool found = false;
+        while( !found )
+        {
+            if( agent.isStopped )
+                yield break;
+
+            // I don't know why the y-position of enemy keep decreasing
+            // until we find the reason, distance is only be calculated in 2D space
+            // float distSQ = transform.position.GetDistanceSq( position );
+            float dx = ( transform.position.x - position.x );
+            float dz = ( transform.position.z - position.z );
+            float distSQ = dx * dx + dz * dz;
+
+            //Vector2 randomPlace = Random.insideUnitCircle * agent.remainingDistance * 0.2f;
+            Vector2 randomPlace = Random.insideUnitCircle * distSQ * 0.1f;
+
+            Vector3 newPos = agent.destination;
+            newPos.x += randomPlace.x;
+            newPos.z += randomPlace.y;
+            bool canMove = isMovingPossible( newPos );
+            //Debug.LogFormat( "Investigate the {0}, remainingdistance = {1}, can move ? {2}, distSq = {3}", newPos, agent.remainingDistance, canMove, distSQ );
+            if( canMove )
+            {
+                MoveToPoint( newPos );
+                found = true;
+                yield break;
+            }
+
+            yield return null;
+        }
+
+    }
 }
