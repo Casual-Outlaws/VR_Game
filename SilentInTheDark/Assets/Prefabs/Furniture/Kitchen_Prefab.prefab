@@ -15,8 +15,8 @@ GameObject:
   m_Name: kitchen_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &2566123857045343073
 Transform:
@@ -157,8 +157,8 @@ GameObject:
   m_Name: plug_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &2566123857045343091
 Transform:
@@ -229,7 +229,7 @@ PrefabInstance:
     - target: {fileID: 5059624334403494003, guid: 0191549d7149bbe428fc432c35b49109,
         type: 3}
       propertyPath: m_Name
-      value: StaticObject Variant 1
+      value: Kitchen_Prefab
       objectReference: {fileID: 0}
     - target: {fileID: 974135489, guid: 0191549d7149bbe428fc432c35b49109, type: 3}
       propertyPath: m_LocalPosition.x

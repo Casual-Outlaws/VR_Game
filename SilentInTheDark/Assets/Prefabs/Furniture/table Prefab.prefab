@@ -11,6 +11,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: table
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: b87f03c4caa683946a1eabaa0fcb9215, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: b87f03c4caa683946a1eabaa0fcb9215, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b87f03c4caa683946a1eabaa0fcb9215, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.61449975

@@ -20785,6 +20785,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: crib
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 13a2c74236b7cdb49b6e05f4860dd331, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 13a2c74236b7cdb49b6e05f4860dd331, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 13a2c74236b7cdb49b6e05f4860dd331, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

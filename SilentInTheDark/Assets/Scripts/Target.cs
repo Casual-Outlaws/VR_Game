@@ -5,9 +5,9 @@ using UnityEngine;
 public class Target : MonoBehaviour
 {
     [SerializeField] GameObject playerPos; //Object's position
+    [SerializeField] float posXmin, posXmax, posZmin, posZmax;
     public GameObject targetPos;
     public bool forceChange;
-    [SerializeField] int hits; //Debug variable to check collision
     float timeReset; //In case if the enemy can't reach this object for X seconds new position will be generated or if targetPos was forceChanged.
     Vector3 newPos; //new coordinates
 
@@ -18,7 +18,6 @@ public class Target : MonoBehaviour
         playerPos = GameObject.FindGameObjectWithTag("Player");
         StartCoroutine("generatePosition");
         targetPos.transform.position = newPos;
-        hits = 0;
         forceChange = false; //[forceChange = true] CAN ONLY BE SET BY DETECTION FROM ANOTHER OBJECT
     }
 
@@ -33,7 +32,7 @@ public class Target : MonoBehaviour
             forceChange = false;
         }
 
-        if (!forceChange && timeReset >= 5)
+        if (!forceChange && timeReset >= 10)
         {
             StartCoroutine("generatePosition");
             targetPos.transform.position = newPos;
@@ -45,10 +44,9 @@ public class Target : MonoBehaviour
     {
         if (col.gameObject.tag == "Enemy")
         {
-            print("hit");
+            //print("hit");
             StartCoroutine("generatePosition");
             targetPos.transform.position = newPos;
-            hits++;
             timeReset = 0;
         }
     }
@@ -59,7 +57,7 @@ public class Target : MonoBehaviour
         //print(coin);
         if (coin <= 7.49f)
         {
-            newPos = new Vector3(Random.Range(-2, 5), 1, Random.Range(-0.5f, 7));
+            newPos = new Vector3(Random.Range(posXmin, posXmax), 1, Random.Range(posZmin, posZmax));
         }
         else
         {

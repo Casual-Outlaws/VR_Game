@@ -24,6 +24,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: fridge_01
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 8856dbe0a9879694f8c375c54b52101d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 8856dbe0a9879694f8c375c54b52101d, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 8856dbe0a9879694f8c375c54b52101d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 8856dbe0a9879694f8c375c54b52101d, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8856dbe0a9879694f8c375c54b52101d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

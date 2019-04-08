@@ -6025,6 +6025,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: chair
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 2fd7decf09f3ea64cbc4b78ad950d435, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 2fd7decf09f3ea64cbc4b78ad950d435, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 2fd7decf09f3ea64cbc4b78ad950d435, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.2506983

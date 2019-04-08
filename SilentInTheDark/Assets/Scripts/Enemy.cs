@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour, ISoundListener
     float timer, distanceToPlayer;
     bool isMoving, stopSound, isWon, isAttacked;
     public GameObject outline;
-    public bool isTarget; //Reacting to sounds. Has to be public.
+    public bool isTarget, agentActivation = true; //Reacting to sounds. Has to be public.
     public NavMeshAgent agent;
     NavMeshPath nmPath;
     Rigidbody rb;
@@ -102,22 +102,29 @@ public class Enemy : MonoBehaviour, ISoundListener
             }
         }
 
-
         distanceToPlayer = transform.position.Get2DDistanceSq( player.transform.position );
         if( isAttacked && distanceToPlayer > enemyCollider.radius * enemyCollider.radius )
         {
             isAttacked = false;
             currentState = EnemyState.Idle;
         }
-        //print(distanceToPlayer); need to look into this more
-        //if (distanceToPlayer < 4f * 4f)
-        //{
-        //    audioSourceOtherGO.SetActive(true);
-        //}
-        //else
-        //    audioSourceOtherGO.SetActive(false);
 
         PlayStateSound();
+
+        if (agentActivation)
+            agent.enabled = true;
+
+        if (!agentActivation)
+        {
+            this.transform.position = Vector3.MoveTowards(this.transform.position, target.transform.position, 0.1f);
+        }
+
+        if (distanceToPlayer < 5f)
+        {
+            audioSourceOtherGO.SetActive(true);
+        }
+        else
+            audioSourceOtherGO.SetActive(false);
     }
 
     //checking if enemy can reach the target
